@@ -7,10 +7,11 @@
  */
 package tk.wurst_client.commands;
 
-import tk.wurst_client.Client;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.commands.Cmd.Info;
 import tk.wurst_client.mods.SpammerMod;
 import tk.wurst_client.spam.SpamProcessor;
+import tk.wurst_client.utils.MiscUtils;
 
 @Info(help = "Changes the delay of Spammer or spams spam from a file.",
 	name = "spammer",
@@ -24,15 +25,17 @@ public class SpammerCmd extends Cmd
 			syntaxError();
 		if(args[0].equalsIgnoreCase("delay"))
 		{
+			if(!MiscUtils.isInteger(args[1]))
+				syntaxError();
 			int newDelay = Integer.parseInt(args[1]);
 			if(newDelay % 50 > 0)
 				newDelay = newDelay - newDelay % 50;
-			Client.wurst.options.spamDelay = newDelay;
+			WurstClient.INSTANCE.options.spamDelay = newDelay;
 			SpammerMod.updateDelaySpinner();
-			Client.wurst.chat.message("Spammer delay set to " + newDelay
-				+ "ms.");
+			WurstClient.INSTANCE.chat.message("Spammer delay set to "
+				+ newDelay + "ms.");
 		}else if(args[0].equalsIgnoreCase("spam"))
 			if(!SpamProcessor.runSpam(args[1]))
-				Client.wurst.chat.error("File does not exist.");
+				WurstClient.INSTANCE.chat.error("File does not exist.");
 	}
 }

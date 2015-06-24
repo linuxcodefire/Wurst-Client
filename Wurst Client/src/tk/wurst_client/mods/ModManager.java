@@ -55,6 +55,9 @@ public class ModManager
 		addMod(new CaveFinderMod());
 		addMod(new ChestEspMod());
 		addMod(new ClickGuiMod());
+		addMod(new CmdBlockMod());
+		addMod(new CrashChestMod());
+		addMod(new CrashItemMod());
 		addMod(new CriticalsMod());
 		addMod(new DerpMod());
 		addMod(new DolphinMod());
@@ -97,6 +100,7 @@ public class ModManager
 		addMod(new NoWebMod());
 		addMod(new NukerMod());
 		addMod(new NukerLegitMod());
+		addMod(new OpSignMod());
 		addMod(new OverlayMod());
 		addMod(new PanicMod());
 		addMod(new PhaseMod());
@@ -116,7 +120,9 @@ public class ModManager
 		addMod(new TimerMod());
 		addMod(new TracersMod());
 		addMod(new TriggerBotMod());
+		addMod(new TrollPotionMod());
 		addMod(new TrueSightMod());
+		addMod(new TunnellerMod());
 		addMod(new XRayMod());
 		addMod(new YesCheatMod());
 		addMod(new AutoBuildMod());

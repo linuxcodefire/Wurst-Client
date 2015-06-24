@@ -9,8 +9,7 @@ package tk.wurst_client.mods;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.client.C01PacketChatMessage;
-import tk.wurst_client.Client;
-import tk.wurst_client.events.EventManager;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.events.listeners.UpdateListener;
 import tk.wurst_client.mods.Mod.Category;
 import tk.wurst_client.mods.Mod.Info;
@@ -25,7 +24,7 @@ public class AutoLeaveMod extends Mod implements UpdateListener
 	public String getRenderName()
 	{
 		String name = getName() + "[";
-		switch(Client.wurst.options.autoLeaveMode)
+		switch(WurstClient.INSTANCE.options.autoLeaveMode)
 		{
 			case 0:
 				name += "Quit";
@@ -43,7 +42,7 @@ public class AutoLeaveMod extends Mod implements UpdateListener
 	@Override
 	public void onEnable()
 	{
-		EventManager.update.addListener(this);
+		WurstClient.INSTANCE.eventManager.add(UpdateListener.class, this);
 	}
 	
 	@Override
@@ -54,7 +53,7 @@ public class AutoLeaveMod extends Mod implements UpdateListener
 			&& (!Minecraft.getMinecraft().isIntegratedServerRunning() || Minecraft
 				.getMinecraft().thePlayer.sendQueue.getPlayerInfo().size() > 1))
 		{
-			switch(Client.wurst.options.autoLeaveMode)
+			switch(WurstClient.INSTANCE.options.autoLeaveMode)
 			{
 				case 0:
 					Minecraft.getMinecraft().theWorld
@@ -74,6 +73,6 @@ public class AutoLeaveMod extends Mod implements UpdateListener
 	@Override
 	public void onDisable()
 	{
-		EventManager.update.removeListener(this);
+		WurstClient.INSTANCE.eventManager.remove(UpdateListener.class, this);
 	}
 }

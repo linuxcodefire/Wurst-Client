@@ -7,8 +7,7 @@
  */
 package tk.wurst_client.mods;
 
-import tk.wurst_client.Client;
-import tk.wurst_client.events.EventManager;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.events.listeners.UpdateListener;
 import tk.wurst_client.mods.Mod.Category;
 import tk.wurst_client.mods.Mod.Info;
@@ -22,13 +21,13 @@ public class PanicMod extends Mod implements UpdateListener
 	@Override
 	public void onEnable()
 	{
-		EventManager.update.addListener(this);
+		WurstClient.INSTANCE.eventManager.add(UpdateListener.class, this);
 	}
 	
 	@Override
 	public void onUpdate()
 	{
-		for(Mod mod : Client.wurst.modManager.getAllMods())
+		for(Mod mod : WurstClient.INSTANCE.modManager.getAllMods())
 			if(mod.getCategory() != Category.HIDDEN && mod.isEnabled())
 				mod.setEnabled(false);
 	}
@@ -36,6 +35,6 @@ public class PanicMod extends Mod implements UpdateListener
 	@Override
 	public void onDisable()
 	{
-		EventManager.update.removeListener(this);
+		WurstClient.INSTANCE.eventManager.remove(UpdateListener.class, this);
 	}
 }

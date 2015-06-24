@@ -8,8 +8,7 @@
 package tk.wurst_client.mods;
 
 import net.minecraft.client.Minecraft;
-import tk.wurst_client.Client;
-import tk.wurst_client.events.EventManager;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.events.listeners.UpdateListener;
 import tk.wurst_client.mods.Mod.Category;
 import tk.wurst_client.mods.Mod.Info;
@@ -22,26 +21,28 @@ public class StepMod extends Mod implements UpdateListener
 	@Override
 	public void onEnable()
 	{
-		EventManager.update.addListener(this);
+		WurstClient.INSTANCE.eventManager.add(UpdateListener.class, this);
 	}
 	
 	@Override
 	public void onUpdate()
 	{
-		if(Client.wurst.modManager.getModByClass(YesCheatMod.class).isEnabled())
+		if(WurstClient.INSTANCE.modManager.getModByClass(YesCheatMod.class)
+			.isEnabled())
 		{
 			Minecraft.getMinecraft().thePlayer.stepHeight = 0.5F;
 			if(Minecraft.getMinecraft().thePlayer.isCollidedHorizontally
 				&& Minecraft.getMinecraft().thePlayer.onGround)
 				Minecraft.getMinecraft().thePlayer.jump();
 		}else
-			Minecraft.getMinecraft().thePlayer.stepHeight = 1.0F;
+			Minecraft.getMinecraft().thePlayer.stepHeight =
+				isEnabled() ? 1.0F : 0.5F;
 	}
 	
 	@Override
 	public void onDisable()
 	{
-		EventManager.update.removeListener(this);
+		WurstClient.INSTANCE.eventManager.remove(UpdateListener.class, this);
 		Minecraft.getMinecraft().thePlayer.stepHeight = 0.5F;
 	}
 }

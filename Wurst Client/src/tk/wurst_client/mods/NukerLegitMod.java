@@ -7,6 +7,9 @@
  */
 package tk.wurst_client.mods;
 
+import java.util.HashSet;
+import java.util.LinkedList;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -15,9 +18,7 @@ import net.minecraft.network.play.client.C07PacketPlayerDigging.Action;
 import net.minecraft.network.play.client.C0APacketAnimation;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MovingObjectPosition;
-import tk.wurst_client.Client;
-import tk.wurst_client.events.EventManager;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.events.listeners.LeftClickListener;
 import tk.wurst_client.events.listeners.RenderListener;
 import tk.wurst_client.events.listeners.UpdateListener;
@@ -44,11 +45,11 @@ public class NukerLegitMod extends Mod implements LeftClickListener,
 	@Override
 	public String getRenderName()
 	{
-		if(Client.wurst.options.nukerMode == 1)
+		if(WurstClient.INSTANCE.options.nukerMode == 1)
 			return "IDNukerLegit [" + NukerMod.id + "]";
-		else if(Client.wurst.options.nukerMode == 2)
+		else if(WurstClient.INSTANCE.options.nukerMode == 2)
 			return "FlatNukerLegit";
-		else if(Client.wurst.options.nukerMode == 3)
+		else if(WurstClient.INSTANCE.options.nukerMode == 3)
 			return "SmashNukerLegit";
 		else
 			return "NukerLegit";
@@ -57,16 +58,21 @@ public class NukerLegitMod extends Mod implements LeftClickListener,
 	@Override
 	public void onEnable()
 	{
-		if(Client.wurst.modManager.getModByClass(NukerMod.class).isEnabled())
-			Client.wurst.modManager.getModByClass(NukerMod.class).setEnabled(
-				false);
-		if(Client.wurst.modManager.getModByClass(SpeedNukerMod.class)
+		if(WurstClient.INSTANCE.modManager.getModByClass(NukerMod.class)
 			.isEnabled())
-			Client.wurst.modManager.getModByClass(SpeedNukerMod.class)
+			WurstClient.INSTANCE.modManager.getModByClass(NukerMod.class)
 				.setEnabled(false);
-		EventManager.leftClick.addListener(this);
-		EventManager.update.addListener(this);
-		EventManager.render.addListener(this);
+		if(WurstClient.INSTANCE.modManager.getModByClass(SpeedNukerMod.class)
+			.isEnabled())
+			WurstClient.INSTANCE.modManager.getModByClass(SpeedNukerMod.class)
+				.setEnabled(false);
+		if(WurstClient.INSTANCE.modManager.getModByClass(TunnellerMod.class)
+			.isEnabled())
+			WurstClient.INSTANCE.modManager.getModByClass(TunnellerMod.class)
+				.setEnabled(false);
+		WurstClient.INSTANCE.eventManager.add(LeftClickListener.class, this);
+		WurstClient.INSTANCE.eventManager.add(UpdateListener.class, this);
+		WurstClient.INSTANCE.eventManager.add(RenderListener.class, this);
 	}
 	
 	@Override
@@ -113,7 +119,7 @@ public class NukerLegitMod extends Mod implements LeftClickListener,
 			Minecraft.getMinecraft().thePlayer.sendQueue
 				.addToSendQueue(new C07PacketPlayerDigging(
 					Action.START_DESTROY_BLOCK, pos, side));
-			if(Client.wurst.modManager.getModByClass(AutoToolMod.class)
+			if(WurstClient.INSTANCE.modManager.getModByClass(AutoToolMod.class)
 				.isEnabled() && oldSlot == -1)
 				oldSlot =
 					Minecraft.getMinecraft().thePlayer.inventory.currentItem;
@@ -131,7 +137,8 @@ public class NukerLegitMod extends Mod implements LeftClickListener,
 				return;
 			}
 		}
-		if(Client.wurst.modManager.getModByClass(AutoToolMod.class).isEnabled())
+		if(WurstClient.INSTANCE.modManager.getModByClass(AutoToolMod.class)
+			.isEnabled())
 			AutoToolMod.setSlot(pos);
 		Minecraft.getMinecraft().thePlayer.sendQueue
 			.addToSendQueue(new C0APacketAnimation());
@@ -158,9 +165,9 @@ public class NukerLegitMod extends Mod implements LeftClickListener,
 	@Override
 	public void onDisable()
 	{
-		EventManager.leftClick.removeListener(this);
-		EventManager.update.removeListener(this);
-		EventManager.render.removeListener(this);
+		WurstClient.INSTANCE.eventManager.remove(LeftClickListener.class, this);
+		WurstClient.INSTANCE.eventManager.remove(UpdateListener.class, this);
+		WurstClient.INSTANCE.eventManager.remove(RenderListener.class, this);
 		if(oldSlot != -1)
 		{
 			Minecraft.getMinecraft().thePlayer.inventory.currentItem = oldSlot;
@@ -169,7 +176,7 @@ public class NukerLegitMod extends Mod implements LeftClickListener,
 		currentDamage = 0;
 		shouldRenderESP = false;
 		NukerMod.id = 0;
-		Client.wurst.fileManager.saveOptions();
+		WurstClient.INSTANCE.fileManager.saveOptions();
 	}
 	
 	@Override
@@ -178,7 +185,7 @@ public class NukerLegitMod extends Mod implements LeftClickListener,
 		if(Minecraft.getMinecraft().objectMouseOver == null
 			|| Minecraft.getMinecraft().objectMouseOver.getBlockPos() == null)
 			return;
-		if(Client.wurst.options.nukerMode == 1
+		if(WurstClient.INSTANCE.options.nukerMode == 1
 			&& Minecraft.getMinecraft().theWorld
 				.getBlockState(
 					Minecraft.getMinecraft().objectMouseOver.getBlockPos())
@@ -189,70 +196,64 @@ public class NukerLegitMod extends Mod implements LeftClickListener,
 					.getBlockState(
 						Minecraft.getMinecraft().objectMouseOver.getBlockPos())
 					.getBlock());
-			Client.wurst.fileManager.saveOptions();
+			WurstClient.INSTANCE.fileManager.saveOptions();
 		}
 	}
 	
 	private BlockPos find()
 	{
-		BlockPos closest = null;
-		float closestDistance = NukerMod.yesCheatRange + 1;
-		for(int y = (int)NukerMod.yesCheatRange; y >= (Client.wurst.options.nukerMode == 2
-			? 0 : -NukerMod.yesCheatRange); y--)
-			for(int x = (int)NukerMod.yesCheatRange; x >= -NukerMod.yesCheatRange - 1; x--)
-				for(int z = (int)NukerMod.yesCheatRange; z >= -NukerMod.yesCheatRange; z--)
+		NukerMod nuker =
+			(NukerMod)WurstClient.INSTANCE.modManager
+				.getModByClass(NukerMod.class);
+		LinkedList<BlockPos> queue = new LinkedList<BlockPos>();
+		HashSet<BlockPos> alreadyProcessed = new HashSet<BlockPos>();
+		queue.add(new BlockPos(Minecraft.getMinecraft().thePlayer));
+		while(!queue.isEmpty())
+		{
+			BlockPos currentPos = queue.poll();
+			if(alreadyProcessed.contains(currentPos))
+				continue;
+			alreadyProcessed.add(currentPos);
+			if(BlockUtils.getPlayerBlockDistance(currentPos) > nuker.yesCheatRange)
+				continue;
+			int currentID =
+				Block.getIdFromBlock(Minecraft.getMinecraft().theWorld
+					.getBlockState(currentPos).getBlock());
+			if(currentID != 0)
+				switch(WurstClient.INSTANCE.options.nukerMode)
 				{
-					if(Minecraft.getMinecraft().thePlayer == null)
-						continue;
-					int posX =
-						(int)(Math
-							.floor(Minecraft.getMinecraft().thePlayer.posX) + x);
-					int posY =
-						(int)(Math
-							.floor(Minecraft.getMinecraft().thePlayer.posY) + y);
-					int posZ =
-						(int)(Math
-							.floor(Minecraft.getMinecraft().thePlayer.posZ) + z);
-					BlockPos blockPos = new BlockPos(posX, posY, posZ);
-					Block block =
-						Minecraft.getMinecraft().theWorld.getBlockState(
-							blockPos).getBlock();
-					float xDiff =
-						(float)(Minecraft.getMinecraft().thePlayer.posX - posX);
-					float yDiff =
-						(float)(Minecraft.getMinecraft().thePlayer.posY - posY);
-					float zDiff =
-						(float)(Minecraft.getMinecraft().thePlayer.posZ - posZ);
-					float currentDistance =
-						BlockUtils.getBlockDistance(xDiff, yDiff, zDiff);
-					MovingObjectPosition fakeObjectMouseOver =
-						Minecraft.getMinecraft().objectMouseOver;
-					if(fakeObjectMouseOver == null)
-						continue;
-					fakeObjectMouseOver.setBlockPos(blockPos);
-					if(Block.getIdFromBlock(block) != 0 && posY >= 0
-						&& currentDistance <= NukerMod.yesCheatRange)
-					{
-						if(Client.wurst.options.nukerMode == 1
-							&& Block.getIdFromBlock(block) != NukerMod.id)
-							continue;
-						if(Client.wurst.options.nukerMode == 3
-							&& block.getPlayerRelativeBlockHardness(
+					case 1:
+						if(currentID == NukerMod.id)
+							return currentPos;
+						break;
+					case 2:
+						if(currentPos.getY() >= Minecraft.getMinecraft().thePlayer.posY)
+							return currentPos;
+						break;
+					case 3:
+						if(Minecraft.getMinecraft().theWorld
+							.getBlockState(currentPos)
+							.getBlock()
+							.getPlayerRelativeBlockHardness(
 								Minecraft.getMinecraft().thePlayer,
-								Minecraft.getMinecraft().theWorld, blockPos) < 1)
-							continue;
-						side = fakeObjectMouseOver.sideHit;
-						if(closest == null)
-						{
-							closest = blockPos;
-							closestDistance = currentDistance;
-						}else if(currentDistance < closestDistance)
-						{
-							closest = blockPos;
-							closestDistance = currentDistance;
-						}
-					}
+								Minecraft.getMinecraft().theWorld, currentPos) >= 1)
+							return currentPos;
+						break;
+					default:
+						return currentPos;
 				}
-		return closest;
+			if(!Minecraft.getMinecraft().theWorld.getBlockState(currentPos)
+				.getBlock().getMaterial().blocksMovement())
+			{
+				queue.add(currentPos.add(0, 0, -1));// north
+				queue.add(currentPos.add(0, 0, 1));// south
+				queue.add(currentPos.add(-1, 0, 0));// west
+				queue.add(currentPos.add(1, 0, 0));// east
+				queue.add(currentPos.add(0, -1, 0));// down
+				queue.add(currentPos.add(0, 1, 0));// up
+			}
+		}
+		return null;
+		
 	}
 }

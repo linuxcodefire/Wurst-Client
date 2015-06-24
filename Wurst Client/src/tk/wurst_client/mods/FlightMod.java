@@ -8,21 +8,21 @@
 package tk.wurst_client.mods;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.play.client.C03PacketPlayer;
 
 import org.darkstorm.minecraft.gui.component.BoundedRangeComponent.ValueDisplay;
 import org.darkstorm.minecraft.gui.component.basic.BasicSlider;
 
-import tk.wurst_client.Client;
-import tk.wurst_client.events.EventManager;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.events.listeners.UpdateListener;
 import tk.wurst_client.mods.Mod.Category;
 import tk.wurst_client.mods.Mod.Info;
 
-@Info(category = Category.MOVEMENT, description = "Makes you fly.\n"
-	+ "This is one of the oldest hacks in Minecraft.", name = "Flight")
+@Info(category = Category.MOVEMENT, description = "Allows you to you fly.\n"
+	+ "Bypasses NoCheat+ if YesCheat+ is enabled.", name = "Flight")
 public class FlightMod extends Mod implements UpdateListener
 {
-	public static float speed = 1F;
+	public float speed = 1F;
 	
 	@Override
 	public void initSliders()
@@ -40,16 +40,34 @@ public class FlightMod extends Mod implements UpdateListener
 	@Override
 	public void onEnable()
 	{
-		EventManager.update.addListener(this);
+		if(WurstClient.INSTANCE.modManager.getModByClass(YesCheatMod.class)
+			.isEnabled())
+		{
+			double posX = Minecraft.getMinecraft().thePlayer.posX;
+			double posY = Minecraft.getMinecraft().thePlayer.posY;
+			double posZ = Minecraft.getMinecraft().thePlayer.posZ;
+			for(int i = 0; i < 4; i++)
+			{
+				Minecraft.getMinecraft().thePlayer.sendQueue
+					.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(
+						posX, posY + 1.01, posZ, false));
+				Minecraft.getMinecraft().thePlayer.sendQueue
+					.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(
+						posX, posY, posZ, false));
+			}
+			Minecraft.getMinecraft().thePlayer.jump();
+		}
+		WurstClient.INSTANCE.eventManager.add(UpdateListener.class, this);
 	}
 	
 	@Override
 	public void onUpdate()
 	{
-		if(Client.wurst.modManager.getModByClass(YesCheatMod.class).isEnabled())
+		if(WurstClient.INSTANCE.modManager.getModByClass(YesCheatMod.class)
+			.isEnabled())
 		{
-			noCheatMessage();
-			setEnabled(false);
+			if(!Minecraft.getMinecraft().thePlayer.onGround)
+				Minecraft.getMinecraft().thePlayer.motionY = -0.02;
 		}else
 		{
 			Minecraft.getMinecraft().thePlayer.capabilities.isFlying = false;
@@ -67,6 +85,6 @@ public class FlightMod extends Mod implements UpdateListener
 	@Override
 	public void onDisable()
 	{
-		EventManager.update.removeListener(this);
+		WurstClient.INSTANCE.eventManager.remove(UpdateListener.class, this);
 	}
 }

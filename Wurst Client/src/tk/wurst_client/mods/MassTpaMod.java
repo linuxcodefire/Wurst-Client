@@ -8,16 +8,15 @@
 package tk.wurst_client.mods;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.util.StringUtils;
-import tk.wurst_client.Client;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.events.ChatInputEvent;
-import tk.wurst_client.events.EventManager;
 import tk.wurst_client.events.listeners.ChatInputListener;
 import tk.wurst_client.events.listeners.UpdateListener;
 import tk.wurst_client.mods.Mod.Category;
@@ -33,6 +32,7 @@ public class MassTpaMod extends Mod implements UpdateListener,
 	private float speed = 1F;
 	private int i;
 	private ArrayList<String> players;
+	Random random = new Random();
 	
 	@Override
 	public void onEnable()
@@ -44,18 +44,9 @@ public class MassTpaMod extends Mod implements UpdateListener,
 		while(itr.hasNext())
 			players.add(StringUtils.stripControlCodes(((NetworkPlayerInfo)itr
 				.next()).getPlayerNameForReal()));
-		players.sort(new Comparator<String>()
-		{
-			Random random = new Random();
-			
-			@Override
-			public int compare(String o1, String o2)
-			{
-				return random.nextInt();
-			}
-		});
-		EventManager.chatInput.addListener(this);
-		EventManager.update.addListener(this);
+		Collections.shuffle(players, random);
+		WurstClient.INSTANCE.eventManager.add(ChatInputListener.class, this);
+		WurstClient.INSTANCE.eventManager.add(UpdateListener.class, this);
 	}
 	
 	@Override
@@ -78,8 +69,8 @@ public class MassTpaMod extends Mod implements UpdateListener,
 	@Override
 	public void onDisable()
 	{
-		EventManager.chatInput.removeListener(this);
-		EventManager.update.removeListener(this);
+		WurstClient.INSTANCE.eventManager.remove(ChatInputListener.class, this);
+		WurstClient.INSTANCE.eventManager.remove(UpdateListener.class, this);
 	}
 	
 	@Override
@@ -92,7 +83,7 @@ public class MassTpaMod extends Mod implements UpdateListener,
 			|| message.toLowerCase().contains("permission"))
 		{
 			event.cancel();
-			Client.wurst.chat
+			WurstClient.INSTANCE.chat
 				.message("§4§lERROR:§f This server doesn't have TPA.");
 			setEnabled(false);
 		}else if(message.toLowerCase().contains("accepted")
@@ -101,7 +92,7 @@ public class MassTpaMod extends Mod implements UpdateListener,
 			&& message.toLowerCase().contains("anfrage"))
 		{
 			event.cancel();
-			Client.wurst.chat
+			WurstClient.INSTANCE.chat
 				.message("Someone accepted your TPA request. Stopping.");
 			setEnabled(false);
 		}

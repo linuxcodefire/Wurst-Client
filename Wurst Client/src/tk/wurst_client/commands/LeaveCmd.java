@@ -7,9 +7,9 @@
  */
 package tk.wurst_client.commands;
 
-import tk.wurst_client.Client;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.client.C01PacketChatMessage;
+import tk.wurst_client.WurstClient;
 
 @Cmd.Info(help = "Leaves the current server or changes the mode of AutoLeave.",
 	name = "leave",
@@ -28,20 +28,21 @@ public class LeaveCmd extends Cmd
 		switch(args.length)
 		{
 			case 0:
-				disconnectWithMode(Client.wurst.options.autoLeaveMode);
+				disconnectWithMode(WurstClient.INSTANCE.options.autoLeaveMode);
 				break;
 			case 1:
 				if(args[0].equalsIgnoreCase("taco"))
 					for(int i = 0; i < 128; i++)
-						Minecraft.getMinecraft().thePlayer.sendAutomaticChatMessage("Taco!");
+						Minecraft.getMinecraft().thePlayer
+							.sendAutomaticChatMessage("Taco!");
 				else
 					disconnectWithMode(parseMode(args[0]));
 				break;
 			case 2:
-				Client.wurst.options.autoLeaveMode = parseMode(args[1]);
-				Client.wurst.fileManager.saveOptions();
-				Client.wurst.chat.message("AutoLeave mode set to \"" + args[1]
-					+ "\".");
+				WurstClient.INSTANCE.options.autoLeaveMode = parseMode(args[1]);
+				WurstClient.INSTANCE.fileManager.saveOptions();
+				WurstClient.INSTANCE.chat.message("AutoLeave mode set to \""
+					+ args[1] + "\".");
 				break;
 			default:
 				break;

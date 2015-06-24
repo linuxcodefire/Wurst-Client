@@ -9,8 +9,7 @@ package tk.wurst_client.mods;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
-import tk.wurst_client.Client;
-import tk.wurst_client.events.EventManager;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.events.listeners.UpdateListener;
 import tk.wurst_client.mods.Mod.Category;
 import tk.wurst_client.mods.Mod.Info;
@@ -30,7 +29,7 @@ public class FightBotMod extends Mod implements UpdateListener
 	@Override
 	public void onEnable()
 	{
-		EventManager.update.addListener(this);
+		WurstClient.INSTANCE.eventManager.add(UpdateListener.class, this);
 	}
 	
 	@Override
@@ -64,16 +63,20 @@ public class FightBotMod extends Mod implements UpdateListener
 		if(Minecraft.getMinecraft().thePlayer.isInWater()
 			&& Minecraft.getMinecraft().thePlayer.posY < entity.posY)
 			Minecraft.getMinecraft().thePlayer.motionY += 0.04;
-		if(Client.wurst.modManager.getModByClass(YesCheatMod.class).isEnabled())
-			speed = KillauraMod.yesCheatSpeed;
+		KillauraMod killaura =
+			(KillauraMod)WurstClient.INSTANCE.modManager
+				.getModByClass(KillauraMod.class);
+		if(WurstClient.INSTANCE.modManager.getModByClass(YesCheatMod.class)
+			.isEnabled())
+			speed = killaura.yesCheatSpeed;
 		else
-			speed = KillauraMod.normalSpeed;
+			speed = killaura.normalSpeed;
 		updateMS();
 		if(hasTimePassedS(speed))
 			if(Minecraft.getMinecraft().thePlayer.getDistanceToEntity(entity) <= range)
 			{
-				if(Client.wurst.modManager.getModByClass(AutoSwordMod.class)
-					.isEnabled())
+				if(WurstClient.INSTANCE.modManager.getModByClass(
+					AutoSwordMod.class).isEnabled())
 					AutoSwordMod.setSlot();
 				CriticalsMod.doCritical();
 				if(EntityUtils.getDistanceFromMouse(entity) > 55)
@@ -92,7 +95,7 @@ public class FightBotMod extends Mod implements UpdateListener
 	@Override
 	public void onDisable()
 	{
-		EventManager.update.removeListener(this);
+		WurstClient.INSTANCE.eventManager.remove(UpdateListener.class, this);
 		Minecraft.getMinecraft().gameSettings.keyBindForward.pressed = false;
 	}
 }

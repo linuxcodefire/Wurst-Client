@@ -9,8 +9,7 @@ package tk.wurst_client.mods;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
-import tk.wurst_client.Client;
-import tk.wurst_client.events.EventManager;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.events.listeners.UpdateListener;
 import tk.wurst_client.mods.Mod.Category;
 import tk.wurst_client.mods.Mod.Info;
@@ -25,32 +24,37 @@ public class KillauraLegitMod extends Mod implements UpdateListener
 	@Override
 	public void onEnable()
 	{
-		if(Client.wurst.modManager.getModByClass(KillauraMod.class).isEnabled())
-			Client.wurst.modManager.getModByClass(KillauraMod.class)
-				.setEnabled(false);
-		if(Client.wurst.modManager.getModByClass(MultiAuraMod.class)
+		if(WurstClient.INSTANCE.modManager.getModByClass(KillauraMod.class)
 			.isEnabled())
-			Client.wurst.modManager.getModByClass(MultiAuraMod.class)
+			WurstClient.INSTANCE.modManager.getModByClass(KillauraMod.class)
 				.setEnabled(false);
-		if(Client.wurst.modManager.getModByClass(TriggerBotMod.class)
+		if(WurstClient.INSTANCE.modManager.getModByClass(MultiAuraMod.class)
 			.isEnabled())
-			Client.wurst.modManager.getModByClass(TriggerBotMod.class)
+			WurstClient.INSTANCE.modManager.getModByClass(MultiAuraMod.class)
 				.setEnabled(false);
-		EventManager.update.addListener(this);
+		if(WurstClient.INSTANCE.modManager.getModByClass(TriggerBotMod.class)
+			.isEnabled())
+			WurstClient.INSTANCE.modManager.getModByClass(TriggerBotMod.class)
+				.setEnabled(false);
+		WurstClient.INSTANCE.eventManager.add(UpdateListener.class, this);
 	}
 	
 	@Override
 	public void onUpdate()
 	{
 		updateMS();
-		if(hasTimePassedS(KillauraMod.yesCheatSpeed)
+		KillauraMod killaura =
+			(KillauraMod)WurstClient.INSTANCE.modManager
+				.getModByClass(KillauraMod.class);
+		if(hasTimePassedS(killaura.yesCheatSpeed)
 			&& EntityUtils.getClosestEntity(true) != null)
 		{
 			EntityLivingBase en = EntityUtils.getClosestEntity(true);
-			if(Minecraft.getMinecraft().thePlayer.getDistanceToEntity(en) <= KillauraMod.yesCheatRange)
+			if(Minecraft.getMinecraft().thePlayer.getDistanceToEntity(en) <= killaura.yesCheatRange)
 			{
-				if(Client.wurst.modManager.getModByClass(CriticalsMod.class)
-					.isEnabled() && Minecraft.getMinecraft().thePlayer.onGround)
+				if(WurstClient.INSTANCE.modManager.getModByClass(
+					CriticalsMod.class).isEnabled()
+					&& Minecraft.getMinecraft().thePlayer.onGround)
 					Minecraft.getMinecraft().thePlayer.jump();
 				if(EntityUtils.getDistanceFromMouse(en) > 55)
 					EntityUtils.faceEntityClient(en);
@@ -69,6 +73,6 @@ public class KillauraLegitMod extends Mod implements UpdateListener
 	@Override
 	public void onDisable()
 	{
-		EventManager.update.removeListener(this);
+		WurstClient.INSTANCE.eventManager.remove(UpdateListener.class, this);
 	}
 }

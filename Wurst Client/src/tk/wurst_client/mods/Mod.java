@@ -15,8 +15,8 @@ import net.minecraft.client.Minecraft;
 
 import org.darkstorm.minecraft.gui.component.basic.BasicSlider;
 
-import tk.wurst_client.Client;
-import tk.wurst_client.gui.error.GuiError;
+import tk.wurst_client.WurstClient;
+import tk.wurst_client.error.gui.GuiError;
 
 public class Mod
 {
@@ -36,6 +36,7 @@ public class Mod
 		BLOCKS,
 		CHAT,
 		COMBAT,
+		EXPLOITS,
 		FUN,
 		HIDDEN,
 		RENDER,
@@ -109,9 +110,9 @@ public class Mod
 				Minecraft.getMinecraft().displayGuiScreen(
 					new GuiError(e, this, "disabling", ""));
 			}
-		Client.wurst.fileManager.saveMods();
-		Client.wurst.analytics.trackEvent("mod", name, enabled ? "enable"
-			: "disable");
+		WurstClient.INSTANCE.fileManager.saveMods();
+		WurstClient.INSTANCE.analytics.trackEvent("mod", name, enabled
+			? "enable" : "disable");
 	}
 	
 	public final void enableOnStartup()
@@ -153,7 +154,7 @@ public class Mod
 	
 	public final void noCheatMessage()
 	{
-		Client.wurst.chat.warning(name + " cannot bypass NoCheat+.");
+		WurstClient.INSTANCE.chat.warning(name + " cannot bypass NoCheat+.");
 	}
 	
 	public final void updateMS()

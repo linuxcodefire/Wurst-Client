@@ -11,7 +11,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import net.minecraft.client.Minecraft;
-import tk.wurst_client.Client;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.BlockPos;
+import tk.wurst_client.WurstClient;
+import tk.wurst_client.utils.EntityUtils;
 import tk.wurst_client.utils.MiscUtils;
 
 public abstract class Cmd
@@ -74,7 +77,7 @@ public abstract class Cmd
 	public void printHelp()
 	{
 		for(String line : help.split("\n"))
-			Client.wurst.chat.message(line);
+			WurstClient.INSTANCE.chat.message(line);
 	}
 	
 	public void printSyntax()
@@ -87,32 +90,42 @@ public abstract class Cmd
 				output += "\n    " + syntax[i];
 		}
 		for(String line : output.split("\n"))
-			Client.wurst.chat.message(line);
+			WurstClient.INSTANCE.chat.message(line);
 	}
 	
-	protected final int[] argsToPos(String... args) throws SyntaxError
+	protected final int[] argsToPos(String... args) throws Cmd.Error
 	{
-		if(args.length < 3)
-			throw new IllegalArgumentException("Too few arguments. Only "
-				+ args.length + " instead of 3.");
 		int[] pos = new int[3];
-		int[] playerPos =
-			new int[]{(int)Minecraft.getMinecraft().thePlayer.posX,
-				(int)Minecraft.getMinecraft().thePlayer.posY,
-				(int)Minecraft.getMinecraft().thePlayer.posZ};
-		for(int i = 0; i < args.length; i++)
-			if(MiscUtils.isInteger(args[i]))
-				pos[i] = Integer.parseInt(args[i]);
-			else if(args[i].startsWith("~"))
-				if(args[i].equals("~"))
-					pos[i] = playerPos[i];
-				else if(MiscUtils.isInteger(args[i].substring(1)))
-					pos[i] =
-						playerPos[i] + Integer.parseInt(args[i].substring(1));
+		if(args.length == 3)
+		{
+			int[] playerPos =
+				new int[]{(int)Minecraft.getMinecraft().thePlayer.posX,
+					(int)Minecraft.getMinecraft().thePlayer.posY,
+					(int)Minecraft.getMinecraft().thePlayer.posZ};
+			for(int i = 0; i < args.length; i++)
+				if(MiscUtils.isInteger(args[i]))
+					pos[i] = Integer.parseInt(args[i]);
+				else if(args[i].startsWith("~"))
+					if(args[i].equals("~"))
+						pos[i] = playerPos[i];
+					else if(MiscUtils.isInteger(args[i].substring(1)))
+						pos[i] =
+							playerPos[i]
+								+ Integer.parseInt(args[i].substring(1));
+					else
+						syntaxError("Invalid coordinates.");
 				else
 					syntaxError("Invalid coordinates.");
-			else
-				syntaxError("Invalid coordinates.");
+		}else if(args.length == 1)
+		{
+			EntityLivingBase entity =
+				EntityUtils.searchEntityByNameRaw(args[0]);
+			if(entity == null)
+				error("Entity \"" + args[0] + "\" could not be found.");
+			BlockPos blockPos = new BlockPos(entity);
+			pos = new int[]{blockPos.getX(), blockPos.getY(), blockPos.getZ()};
+		}else
+			syntaxError("Invalid coordinates.");
 		return pos;
 	}
 	

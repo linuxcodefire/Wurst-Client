@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.BlockPos;
-import tk.wurst_client.Client;
-import tk.wurst_client.events.EventManager;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.events.listeners.RenderListener;
 import tk.wurst_client.events.listeners.UpdateListener;
 import tk.wurst_client.mods.Mod.Category;
@@ -30,20 +29,20 @@ public class SearchMod extends Mod implements UpdateListener, RenderListener
 	private ArrayList<BlockPos> matchingBlocks = new ArrayList<BlockPos>();
 	private int range = 50;
 	private int maxBlocks = 1000;
-	public static boolean shouldInform = true;
+	public boolean notify = true;
 	
 	@Override
 	public String getRenderName()
 	{
-		return getName() + " [" + Client.wurst.options.searchID + "]";
+		return getName() + " [" + WurstClient.INSTANCE.options.searchID + "]";
 	}
 	
 	@Override
 	public void onEnable()
 	{
-		shouldInform = true;
-		EventManager.update.addListener(this);
-		EventManager.render.addListener(this);
+		notify = true;
+		WurstClient.INSTANCE.eventManager.add(UpdateListener.class, this);
+		WurstClient.INSTANCE.eventManager.add(RenderListener.class, this);
 	}
 	
 	@Override
@@ -75,7 +74,7 @@ public class SearchMod extends Mod implements UpdateListener, RenderListener
 						BlockPos pos = new BlockPos(posX, posY, posZ);
 						if(Block
 							.getIdFromBlock(Minecraft.getMinecraft().theWorld
-								.getBlockState(pos).getBlock()) == Client.wurst.options.searchID)
+								.getBlockState(pos).getBlock()) == WurstClient.INSTANCE.options.searchID)
 							matchingBlocks.add(pos);
 						if(matchingBlocks.size() >= maxBlocks)
 							break;
@@ -86,16 +85,16 @@ public class SearchMod extends Mod implements UpdateListener, RenderListener
 				if(matchingBlocks.size() >= maxBlocks)
 					break;
 			}
-			if(matchingBlocks.size() >= maxBlocks && shouldInform)
+			if(matchingBlocks.size() >= maxBlocks && notify)
 			{
-				Client.wurst.chat.warning(getName()
+				WurstClient.INSTANCE.chat.warning(getName()
 					+ " found §lA LOT§r of blocks.");
-				Client.wurst.chat
+				WurstClient.INSTANCE.chat
 					.message("To prevent lag, it will only show the first "
 						+ maxBlocks + " blocks.");
-				shouldInform = false;
+				notify = false;
 			}else if(matchingBlocks.size() < maxBlocks)
-				shouldInform = true;
+				notify = true;
 			updateLastMS();
 		}
 	}
@@ -103,7 +102,7 @@ public class SearchMod extends Mod implements UpdateListener, RenderListener
 	@Override
 	public void onDisable()
 	{
-		EventManager.update.removeListener(this);
-		EventManager.render.removeListener(this);
+		WurstClient.INSTANCE.eventManager.remove(UpdateListener.class, this);
+		WurstClient.INSTANCE.eventManager.remove(RenderListener.class, this);
 	}
 }

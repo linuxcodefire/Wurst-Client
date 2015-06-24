@@ -8,10 +8,9 @@
 package tk.wurst_client.commands;
 
 import net.minecraft.client.Minecraft;
-import tk.wurst_client.Client;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.commands.Cmd.Info;
 import tk.wurst_client.events.ChatInputEvent;
-import tk.wurst_client.events.EventManager;
 import tk.wurst_client.events.listeners.ChatInputListener;
 
 @Info(help = "Annoys a player by repeating everything he says.",
@@ -31,11 +30,12 @@ public class AnnoyCmd extends Cmd implements ChatInputListener
 			if(args.length == 1)
 			{
 				name = args[0];
-				Client.wurst.chat.message("Now annoying " + name + ".");
+				WurstClient.INSTANCE.chat.message("Now annoying " + name + ".");
 				if(name.equals(Minecraft.getMinecraft().thePlayer.getName()))
-					Client.wurst.chat
+					WurstClient.INSTANCE.chat
 						.warning("Annoying yourself is a bad idea!");
-				EventManager.chatInput.addListener(this);
+				WurstClient.INSTANCE.eventManager.add(ChatInputListener.class,
+					this);
 			}else
 			{
 				toggled = false;
@@ -43,10 +43,12 @@ public class AnnoyCmd extends Cmd implements ChatInputListener
 			}
 		}else
 		{
-			EventManager.chatInput.removeListener(this);
+			WurstClient.INSTANCE.eventManager.remove(ChatInputListener.class,
+				this);
 			if(name != null)
 			{
-				Client.wurst.chat.message("No longer annoying " + name + ".");
+				WurstClient.INSTANCE.chat.message("No longer annoying " + name
+					+ ".");
 				name = null;
 			}
 		}

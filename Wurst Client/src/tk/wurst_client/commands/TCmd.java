@@ -1,5 +1,5 @@
 /*
- * Copyright © 2014 - 2015 | Alexander01998 | All rights reserved.
+ * Copyright Â© 2014 - 2015 | Alexander01998 | All rights reserved.
  * 
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -7,7 +7,7 @@
  */
 package tk.wurst_client.commands;
 
-import tk.wurst_client.Client;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.commands.Cmd.Info;
 import tk.wurst_client.mods.Mod;
 
@@ -26,14 +26,14 @@ public class TCmd extends Cmd
 			mode = 2;
 		else
 			syntaxError();
-		Mod mod = Client.wurst.modManager.getModByName(args[0]);
+		Mod mod = WurstClient.INSTANCE.modManager.getModByName(args[0]);
 		if(mod == null)
 			error("Could not find mod \"" + args[0] + "\".");
 		if(mode == 0)
 			mod.toggle();
-		else if(mode == 1)
+		else if(mode == 1 && !mod.isEnabled())
 			mod.setEnabled(true);
-		else if(mode == 2)
+		else if(mode == 2 && mod.isEnabled())
 			mod.setEnabled(false);
 	}
 }

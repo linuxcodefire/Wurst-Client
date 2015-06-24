@@ -8,17 +8,16 @@
 package tk.wurst_client.commands;
 
 import net.minecraft.util.BlockPos;
-import tk.wurst_client.Client;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.ai.PathFinder;
 import tk.wurst_client.ai.PathPoint;
 import tk.wurst_client.commands.Cmd.Info;
-import tk.wurst_client.events.EventManager;
 import tk.wurst_client.events.listeners.RenderListener;
 import tk.wurst_client.utils.RenderUtils;
 
 @Info(help = "Shows the shortest path to a specific point. Useful for labyrinths and caves.",
 	name = "path",
-	syntax = {"<x> <y> <z>"})
+	syntax = {"<x> <y> <z>", "<entity>"})
 public class PathCmd extends Cmd implements RenderListener
 {
 	private PathPoint path;
@@ -30,12 +29,11 @@ public class PathCmd extends Cmd implements RenderListener
 		path = null;
 		if(enabled)
 		{
-			EventManager.render.removeListener(this);
+			WurstClient.INSTANCE.eventManager
+				.remove(RenderListener.class, this);
 			enabled = false;
 			return;
 		}
-		if(args.length != 3)
-			syntaxError();
 		int[] posArray = argsToPos(args);
 		final BlockPos pos =
 			new BlockPos(posArray[0], posArray[1], posArray[2]);
@@ -51,9 +49,10 @@ public class PathCmd extends Cmd implements RenderListener
 				{
 					path = pathFinder.getRawPath();
 					enabled = true;
-					EventManager.render.addListener(PathCmd.this);
+					WurstClient.INSTANCE.eventManager.add(RenderListener.class,
+						PathCmd.this);
 				}else
-					Client.wurst.chat.error("Could not find a path.");
+					WurstClient.INSTANCE.chat.error("Could not find a path.");
 				System.out.println("Done after "
 					+ (System.nanoTime() - startTime) / 1e6 + "ms");
 			}

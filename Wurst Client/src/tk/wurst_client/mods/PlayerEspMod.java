@@ -10,8 +10,7 @@ package tk.wurst_client.mods;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import tk.wurst_client.Client;
-import tk.wurst_client.events.EventManager;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.events.listeners.RenderListener;
 import tk.wurst_client.mods.Mod.Category;
 import tk.wurst_client.mods.Mod.Info;
@@ -25,26 +24,27 @@ public class PlayerEspMod extends Mod implements RenderListener
 	@Override
 	public void onEnable()
 	{
-		EventManager.render.addListener(this);
+		WurstClient.INSTANCE.eventManager.add(RenderListener.class, this);
 	}
 	
 	@Override
 	public void onRender()
 	{
-		if(Client.wurst.modManager.getModByClass(ArenaBrawlMod.class)
+		if(WurstClient.INSTANCE.modManager.getModByClass(ArenaBrawlMod.class)
 			.isEnabled())
 			return;
 		for(Object entity : Minecraft.getMinecraft().theWorld.loadedEntityList)
 			if(entity instanceof EntityPlayer
 				&& !((Entity)entity).getName().equals(
 					Minecraft.getMinecraft().getSession().getUsername()))
-				RenderUtils.entityESPBox((Entity)entity, Client.wurst.friends
-					.contains(((EntityPlayer)entity).getName()) ? 1 : 0);
+				RenderUtils.entityESPBox((Entity)entity,
+					WurstClient.INSTANCE.friends
+						.contains(((EntityPlayer)entity).getName()) ? 1 : 0);
 	}
 	
 	@Override
 	public void onDisable()
 	{
-		EventManager.render.removeListener(this);
+		WurstClient.INSTANCE.eventManager.remove(RenderListener.class, this);
 	}
 }

@@ -9,8 +9,7 @@ package tk.wurst_client.mods;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
-import tk.wurst_client.Client;
-import tk.wurst_client.events.EventManager;
+import tk.wurst_client.WurstClient;
 import tk.wurst_client.events.listeners.UpdateListener;
 import tk.wurst_client.mods.Mod.Category;
 import tk.wurst_client.mods.Mod.Info;
@@ -26,31 +25,33 @@ public class MultiAuraMod extends Mod implements UpdateListener
 	@Override
 	public void onEnable()
 	{
-		if(Client.wurst.modManager.getModByClass(KillauraMod.class).isEnabled())
-			Client.wurst.modManager.getModByClass(KillauraMod.class)
-				.setEnabled(false);
-		if(Client.wurst.modManager.getModByClass(KillauraLegitMod.class)
+		if(WurstClient.INSTANCE.modManager.getModByClass(KillauraMod.class)
 			.isEnabled())
-			Client.wurst.modManager.getModByClass(KillauraLegitMod.class)
+			WurstClient.INSTANCE.modManager.getModByClass(KillauraMod.class)
 				.setEnabled(false);
-		if(Client.wurst.modManager.getModByClass(TriggerBotMod.class)
+		if(WurstClient.INSTANCE.modManager
+			.getModByClass(KillauraLegitMod.class).isEnabled())
+			WurstClient.INSTANCE.modManager.getModByClass(
+				KillauraLegitMod.class).setEnabled(false);
+		if(WurstClient.INSTANCE.modManager.getModByClass(TriggerBotMod.class)
 			.isEnabled())
-			Client.wurst.modManager.getModByClass(TriggerBotMod.class)
+			WurstClient.INSTANCE.modManager.getModByClass(TriggerBotMod.class)
 				.setEnabled(false);
-		EventManager.update.addListener(this);
+		WurstClient.INSTANCE.eventManager.add(UpdateListener.class, this);
 	}
 	
 	@Override
 	public void onUpdate()
 	{
-		if(Client.wurst.modManager.getModByClass(YesCheatMod.class).isEnabled())
+		if(WurstClient.INSTANCE.modManager.getModByClass(YesCheatMod.class)
+			.isEnabled())
 		{
 			noCheatMessage();
 			setEnabled(false);
-			Client.wurst.chat.message("Switching to "
-				+ Client.wurst.modManager.getModByClass(KillauraMod.class)
-					.getName() + ".");
-			Client.wurst.modManager.getModByClass(KillauraMod.class)
+			WurstClient.INSTANCE.chat.message("Switching to "
+				+ WurstClient.INSTANCE.modManager.getModByClass(
+					KillauraMod.class).getName() + ".");
+			WurstClient.INSTANCE.modManager.getModByClass(KillauraMod.class)
 				.setEnabled(true);
 			return;
 		}
@@ -62,8 +63,8 @@ public class MultiAuraMod extends Mod implements UpdateListener
 			{
 				EntityLivingBase en =
 					EntityUtils.getCloseEntities(true, range).get(i);
-				if(Client.wurst.modManager.getModByClass(AutoSwordMod.class)
-					.isEnabled())
+				if(WurstClient.INSTANCE.modManager.getModByClass(
+					AutoSwordMod.class).isEnabled())
 					AutoSwordMod.setSlot();
 				CriticalsMod.doCritical();
 				EntityUtils.faceEntityPacket(en);
@@ -78,6 +79,6 @@ public class MultiAuraMod extends Mod implements UpdateListener
 	@Override
 	public void onDisable()
 	{
-		EventManager.update.removeListener(this);
+		WurstClient.INSTANCE.eventManager.remove(UpdateListener.class, this);
 	}
 }
