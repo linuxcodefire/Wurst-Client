@@ -21,7 +21,17 @@ CLASS none/ot net/minecraft/profiler/IPlayerUsage
 	METHOD ac isSnooperEnabled ()Z
 	METHOD b addServerTypeToSnooper (Lnone/os;)V
 CLASS none/pl net/minecraft/entity/Entity
+CLASS none/zx net/minecraft/item/Item
 CLASS none/zy
+CLASS none/afi net/minecraft/block/Block
+	METHOD a getIdFromBlock (Lnone/afi;)I
+		ARG 0 block
+	METHOD a getBlockFromItem (Lnone/zx;)Lnone/afi;
+		ARG 0 item
+	METHOD b getBlockFromName (Ljava/lang/String;)Lnone/afi;
+		ARG 0 name
+	METHOD c getBlockById (I)Lnone/afi;
+		ARG 0 id
 CLASS none/ats net/minecraft/world/storage/ISaveFormat
 CLASS none/aui net/minecraft/util/MovingObjectPosition
 CLASS none/avf net/minecraft/client/Minecraft
