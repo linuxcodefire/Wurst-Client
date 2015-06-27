@@ -1,4 +1,6 @@
 CLASS none/b net/minecraft/crash/CrashReport
+CLASS none/n net/minecraft/command/ICommandSender
+CLASS none/o net/minecraft/command/CommandResultStats
 CLASS none/ck net/minecraft/util/BlockPos
 CLASS none/cp net/minecraft/util/RegistryNamespacedDefaultedByKey
 CLASS none/cu net/minecraft/util/ObjectIntIdentityMap
@@ -12,10 +14,14 @@ CLASS none/is net/minecraft/network/play/client/C07PacketPlayerDigging
 		FIELD e DROP_ITEM Lnone/is$a;
 		FIELD f RELEASE_USE_ITEM Lnone/is$a;
 CLASS none/jz net/minecraft/util/ResourceLocation
-CLASS none/lf
+CLASS none/lf net/minecraft/world/WorldServer
 	METHOD a addScheduledTask (Ljava/lang/Runnable;)Lcom/google/common/util/concurrent/ListenableFuture;
 	METHOD aI isCallingFromMinecraftThread ()Z
+CLASS none/lg
+	METHOD t_ onUpdate ()V
+	METHOD v isSpectator ()Z
 CLASS none/nu net/minecraft/profiler/Profiler
+	METHOD a startSection (Ljava/lang/String;)V
 CLASS none/oe net/minecraft/util/IThreadListener
 	METHOD a addScheduledTask (Ljava/lang/Runnable;)Lcom/google/common/util/concurrent/ListenableFuture;
 	METHOD aI isCallingFromMinecraftThread ()Z
@@ -23,10 +29,273 @@ CLASS none/os net/minecraft/profiler/PlayerUsageSnooper
 CLASS none/ot net/minecraft/profiler/IPlayerUsage
 	METHOD ac isSnooperEnabled ()Z
 	METHOD b addServerTypeToSnooper (Lnone/os;)V
+CLASS none/pi
+	METHOD a setSize (FF)V
+	METHOD h entityInit ()V
 CLASS none/pl net/minecraft/entity/Entity
+	FIELD A prevRotationYaw F
+	FIELD B prevRotationPitch F
+	FIELD C onGround Z
+	FIELD D isCollidedHorizontally Z
+	FIELD E isCollidedVertically Z
+	FIELD F isCollided Z
+	FIELD G velocityChanged Z
+	FIELD H isInWeb Z
+	FIELD I isDead Z
+	FIELD L prevDistanceWalkedModified F
+	FIELD M distanceWalkedModified F
+	FIELD V rand Ljava/util/Random;
+	FIELD ab isImmuneToFire Z
+	FIELD ac dataWatcher Lnone/qa;
+	FIELD ak inPortal Z
+	FIELD aq entityUniqueID Ljava/util/UUID;
+	FIELD c entityId I
+	FIELD f boundingBox Lnone/auh;
+	FIELD g isOutsideBorder Z
+	FIELD i fire I
+	FIELD m ridingEntity Lnone/pl;
+	FIELD o worldObj Lnone/adn;
+	FIELD p prevPosX D
+	FIELD q prevPosY D
+	FIELD r prevPosZ D
+	FIELD s posX D
+	FIELD t posY D
+	FIELD u posZ D
+	FIELD v motionX D
+	FIELD w motionY D
+	FIELD x motionZ D
+	FIELD y rotationYaw F
+	FIELD z rotationPitch F
+	METHOD <init> (Lnone/adn;)V
+		ARG 0 world
+	METHOD F getEntityId ()I
+	METHOD I preparePlayerToSpawn ()V
+	METHOD J setDead ()V
+	METHOD K onEntityUpdate ()V
+	METHOD L getMaxInPortalTime ()I
+	METHOD M setOnFireFromLava ()V
+	METHOD N extinguish ()V
+	METHOD O kill ()V
+	METHOD a setSize (FF)V
+		ARG 0 width
+		ARG 1 height
+	METHOD aq getPortalCooldown ()I
+	METHOD av isSneaking ()Z
+	METHOD aw isSprinting ()Z
+	METHOD ax isInvisible ()Z
+	METHOD b setPosition (DDD)V
+		ARG 0 x
+		ARG 1 y
+		ARG 2 z
+	METHOD b setRotation (FF)V
+		ARG 0 yaw
+		ARG 1 pitch
+	METHOD b setFlag (IZ)V
+	METHOD c isOffsetPositionInLiquid (DDD)Z
+		ARG 0 x
+		ARG 1 y
+		ARG 2 z
+	METHOD c setAngles (FF)V
+		ARG 0 yaw
+		ARG 1 pitch
+	METHOD c setSneaking (Z)V
+		ARG 0 sneaking
+	METHOD d moveEntity (DDD)V
+		ARG 0 x
+		ARG 1 ry
+		ARG 2 z
+	METHOD d setEntityId (I)V
+		ARG 0 id
+	METHOD d setSprinting (Z)V
+		ARG 0 sprinting
+	METHOD e setFire (I)V
+		ARG 0 seconds
+	METHOD e setInvisible (Z)V
+		ARG 0 invisible
+	METHOD f isInvisibleToPlayer (Lnone/wo;)Z
+		ARG 0 player
+	METHOD g getFlag (I)Z
+	METHOD h entityInit ()V
+	METHOD i setVelocity (DDD)V
+		ARG 0 x
+		ARG 1 y
+		ARG 2 z
+	METHOD t_ onUpdate ()V
+CLASS none/pq
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/ps
+	METHOD K onEntityUpdate ()V
+	METHOD O kill ()V
+	METHOD d setSprinting (Z)V
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/pt
+	METHOD K onEntityUpdate ()V
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/qa net/minecraft/entity/DataWatcher
+	METHOD a addObject (ILjava/lang/Object;)V
+CLASS none/qb
+	METHOD h entityInit ()V
+CLASS none/tl
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/tq
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/tt
+	METHOD h entityInit ()V
+CLASS none/tu
+	METHOD h entityInit ()V
+CLASS none/tv
+	METHOD h entityInit ()V
+CLASS none/tw
+	METHOD h entityInit ()V
+CLASS none/tz
+	METHOD h entityInit ()V
+CLASS none/ua
+	METHOD K onEntityUpdate ()V
+CLASS none/ub
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/uf
+	METHOD h entityInit ()V
+CLASS none/ug
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/uh
+	METHOD h entityInit ()V
+CLASS none/ul
+	METHOD h entityInit ()V
+CLASS none/un
+	METHOD e setInvisible (Z)V
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/uo
+	METHOD b setPosition (DDD)V
+	METHOD d moveEntity (DDD)V
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/up
+	METHOD h entityInit ()V
+CLASS none/uq
+	METHOD h entityInit ()V
+CLASS none/us
+	METHOD J setDead ()V
+	METHOD h entityInit ()V
+	METHOD i setVelocity (DDD)V
+	METHOD t_ onUpdate ()V
+CLASS none/uw
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/uy
+	METHOD h entityInit ()V
+	METHOD i setVelocity (DDD)V
+	METHOD t_ onUpdate ()V
+CLASS none/uz
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/va
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/vb
+	METHOD J setDead ()V
+	METHOD b setPosition (DDD)V
+	METHOD h entityInit ()V
+	METHOD i setVelocity (DDD)V
+	METHOD t_ onUpdate ()V
+CLASS none/vd
+	METHOD h entityInit ()V
+CLASS none/ve
+	METHOD J setDead ()V
+CLASS none/vf
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/vg
+	METHOD t_ onUpdate ()V
+CLASS none/vi
+	METHOD t_ onUpdate ()V
+CLASS none/vj
+	METHOD t_ onUpdate ()V
+CLASS none/vk
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/vm
+	METHOD h entityInit ()V
+CLASS none/vo
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/vp
+	METHOD h entityInit ()V
+CLASS none/vq
+	METHOD t_ onUpdate ()V
+CLASS none/vs
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/vu
+	METHOD h entityInit ()V
+CLASS none/vw
+	METHOD t_ onUpdate ()V
+CLASS none/vx
+	METHOD t_ onUpdate ()V
+CLASS none/wa
+	METHOD t_ onUpdate ()V
+CLASS none/wb
+	METHOD h entityInit ()V
+CLASS none/wc
+	METHOD J setDead ()V
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/wd
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/we
+	METHOD h entityInit ()V
+CLASS none/wf
+	METHOD a setSize (FF)V
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/wj
+	METHOD h entityInit ()V
+CLASS none/wo net/minecraft/entity/player/EntityPlayer
+	METHOD I preparePlayerToSpawn ()V
+	METHOD J setDead ()V
+	METHOD L getMaxInPortalTime ()I
+	METHOD aq getPortalCooldown ()I
+	METHOD f isInvisibleToPlayer (Lnone/wo;)Z
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+	METHOD v isSpectator ()Z
+CLASS none/wr
+	METHOD h entityInit ()V
+	METHOD i setVelocity (DDD)V
+	METHOD t_ onUpdate ()V
+CLASS none/ws
+	METHOD h entityInit ()V
+	METHOD i setVelocity (DDD)V
+	METHOD t_ onUpdate ()V
+CLASS none/wt
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
+CLASS none/wu
+	METHOD h entityInit ()V
+	METHOD i setVelocity (DDD)V
+	METHOD t_ onUpdate ()V
+CLASS none/wz
+	METHOD h entityInit ()V
+	METHOD i setVelocity (DDD)V
+	METHOD t_ onUpdate ()V
+CLASS none/xb
+	METHOD t_ onUpdate ()V
+CLASS none/xe
+	METHOD h entityInit ()V
 CLASS none/za net/minecraft/creativetab/CreativeTabs
 CLASS none/zx net/minecraft/item/Item
 CLASS none/zy net/minecraft/item/ItemStack
+CLASS none/adn net/minecraft/world/World
+	FIELD B theProfiler Lnone/nu;
+	FIELD D isRemote Z
 CLASS none/adr net/minecraft/world/IBlockAccess
 CLASS none/afa
 	METHOD a getStateFromMeta (I)Lnone/ama;
@@ -500,6 +769,7 @@ CLASS none/arp net/minecraft/block/material/MaterialPortal/MaterialPortal
 	METHOD b blocksLight ()Z
 	METHOD c blocksMovement ()Z
 CLASS none/ats net/minecraft/world/storage/ISaveFormat
+CLASS none/auh net/minecraft/util/AxisAlignedBB
 CLASS none/aui net/minecraft/util/MovingObjectPosition
 CLASS none/avd net/minecraft/client/renderer/RenderHelper
 	METHOD a disableStandardItemLighting ()V
@@ -1141,9 +1411,73 @@ CLASS none/bcz net/minecraft/client/network/NetHandlerPlayClient
 CLASS none/bdb net/minecraft/client/multiplayer/PlayerControllerMP
 CLASS none/bdc net/minecraft/client/multiplayer/WorldClient
 CLASS none/bdf net/minecraft/client/multiplayer/ServerData
+CLASS none/bdm
+	METHOD t_ onUpdate ()V
+CLASS none/bdn
+	METHOD t_ onUpdate ()V
+CLASS none/bdo
+	METHOD t_ onUpdate ()V
+CLASS none/bdp
+	METHOD t_ onUpdate ()V
+CLASS none/bdq
+	METHOD t_ onUpdate ()V
+CLASS none/bdr
+	CLASS none/bdr$b
+		METHOD t_ onUpdate ()V
+	CLASS none/bdr$c
+		METHOD t_ onUpdate ()V
+CLASS none/bds
+	METHOD t_ onUpdate ()V
+CLASS none/bdt
+	METHOD t_ onUpdate ()V
+CLASS none/bdu
+	METHOD t_ onUpdate ()V
+CLASS none/bdv
+	METHOD t_ onUpdate ()V
+CLASS none/bdw
+	METHOD t_ onUpdate ()V
+CLASS none/bdx
+	METHOD t_ onUpdate ()V
+CLASS none/bdz
+	METHOD t_ onUpdate ()V
+CLASS none/bea
+	METHOD t_ onUpdate ()V
+CLASS none/beb
+	METHOD t_ onUpdate ()V
+CLASS none/bec
+	METHOD h entityInit ()V
+	METHOD t_ onUpdate ()V
 CLASS none/bed net/minecraft/client/particle/EffectRenderer
+CLASS none/bef
+	METHOD t_ onUpdate ()V
+CLASS none/beg
+	METHOD t_ onUpdate ()V
+CLASS none/beh
+	METHOD t_ onUpdate ()V
+CLASS none/bei
+	METHOD t_ onUpdate ()V
+CLASS none/bej
+	METHOD t_ onUpdate ()V
+CLASS none/bek
+	METHOD t_ onUpdate ()V
+CLASS none/bem
+	METHOD t_ onUpdate ()V
+CLASS none/ben
+	METHOD t_ onUpdate ()V
+CLASS none/beq
+	METHOD t_ onUpdate ()V
+CLASS none/ber
+	METHOD t_ onUpdate ()V
+CLASS none/bes
+	METHOD t_ onUpdate ()V
 CLASS none/beu net/minecraft/client/entity/AbstractClientPlayer
+	METHOD v isSpectator ()Z
 CLASS none/bex net/minecraft/client/entity/EntityPlayerSP
+	METHOD av isSneaking ()Z
+	METHOD d setSprinting (Z)V
+	METHOD t_ onUpdate ()V
+CLASS none/bey
+	METHOD t_ onUpdate ()V
 CLASS none/bfl net/minecraft/client/renderer/EntityRenderer
 CLASS none/bfm net/minecraft/client/renderer/GlStateManager
 	METHOD C disableRescaleNormal ()V
@@ -1172,6 +1506,7 @@ CLASS none/bpw net/minecraft/client/audio/MusicTicker
 CLASS none/bqa net/minecraft/client/audio/SoundHandler
 CLASS none/bqn net/minecraft/client/stream/IStream
 CLASS net/minecraft/server/MinecraftServer net/minecraft/server/MinecraftServer
+	METHOD B getAllowNether ()Z
 	METHOD a addScheduledTask (Ljava/lang/Runnable;)Lcom/google/common/util/concurrent/ListenableFuture;
 	METHOD aI isCallingFromMinecraftThread ()Z
 	METHOD ac isSnooperEnabled ()Z
