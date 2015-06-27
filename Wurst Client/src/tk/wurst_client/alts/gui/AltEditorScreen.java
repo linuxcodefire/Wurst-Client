@@ -120,7 +120,7 @@ public abstract class AltEditorScreen extends GuiScreen
 	protected abstract void onDoneButtonClick(GuiButton button);
 	
 	@Override
-	protected void actionPerformed(GuiButton button)
+	public void actionPerformed(GuiButton button)
 	{
 		if(button.enabled)
 			if(button.id == 1)
@@ -140,7 +140,7 @@ public abstract class AltEditorScreen extends GuiScreen
 	 * KeyListener.keyTyped(KeyEvent e).
 	 */
 	@Override
-	protected void keyTyped(char par1, int par2)
+	public void keyTyped(char par1, int par2)
 	{
 		emailBox.textboxKeyTyped(par1, par2);
 		passwordBox.textboxKeyTyped(par1, par2);
@@ -151,12 +151,9 @@ public abstract class AltEditorScreen extends GuiScreen
 	
 	/**
 	 * Called when the mouse is clicked.
-	 *
-	 * @throws IOException
 	 */
 	@Override
-	protected void mouseClicked(int par1, int par2, int par3)
-		throws IOException
+	public void mouseClicked(int par1, int par2, int par3)
 	{
 		super.mouseClicked(par1, par2, par3);
 		emailBox.mouseClicked(par1, par2, par3);

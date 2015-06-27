@@ -299,7 +299,7 @@ public class ArenaBrawlMod extends Mod implements ChatInputListener,
 	public void onDeath()
 	{
 		Minecraft.getMinecraft().thePlayer.respawnPlayer();
-		GuiScreen.mc.displayGuiScreen((GuiScreen)null);
+		Minecraft.getMinecraft().displayGuiScreen((GuiScreen)null);
 		WurstClient.INSTANCE.chat.message("You died.");
 		setEnabled(false);
 	}

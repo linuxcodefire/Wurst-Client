@@ -52,7 +52,7 @@ public class GuiOpSign extends GuiScreen
 	}
 	
 	@Override
-	protected void actionPerformed(GuiButton button) throws IOException
+	public void actionPerformed(GuiButton button)
 	{
 		if(!button.enabled)
 			return;
@@ -86,7 +86,7 @@ public class GuiOpSign extends GuiScreen
 	 * KeyListener.keyTyped(KeyEvent e).
 	 */
 	@Override
-	protected void keyTyped(char par1, int par2)
+	public void keyTyped(char par1, int par2)
 	{
 		commandBox.textboxKeyTyped(par1, par2);
 	}
@@ -102,12 +102,9 @@ public class GuiOpSign extends GuiScreen
 	
 	/**
 	 * Called when the mouse is clicked.
-	 *
-	 * @throws IOException
 	 */
 	@Override
-	protected void mouseClicked(int par1, int par2, int par3)
-		throws IOException
+	public void mouseClicked(int par1, int par2, int par3)
 	{
 		super.mouseClicked(par1, par2, par3);
 		commandBox.mouseClicked(par1, par2, par3);

@@ -58,7 +58,7 @@ public class GuiKeybindManager extends GuiScreen
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	protected void actionPerformed(GuiButton clickedButton)
+	public void actionPerformed(GuiButton clickedButton)
 	{
 		if(clickedButton.enabled)
 			if(clickedButton.id == 0)
@@ -97,7 +97,7 @@ public class GuiKeybindManager extends GuiScreen
 	 * KeyListener.keyTyped(KeyEvent e).
 	 */
 	@Override
-	protected void keyTyped(char par1, int par2)
+	public void keyTyped(char par1, int par2)
 	{
 		if(par2 == 28 || par2 == 156)
 			actionPerformed((GuiButton)buttonList.get(0));
@@ -109,7 +109,7 @@ public class GuiKeybindManager extends GuiScreen
 	 * @throws IOException
 	 */
 	@Override
-	protected void mouseClicked(int par1, int par2, int par3)
+	public void mouseClicked(int par1, int par2, int par3)
 		throws IOException
 	{
 		if(par2 >= 36 && par2 <= height - 57)

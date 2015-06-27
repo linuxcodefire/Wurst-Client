@@ -25,7 +25,7 @@ public class GuiKeybindPressAKey extends GuiScreen
 	 * KeyListener.keyTyped(KeyEvent e).
 	 */
 	@Override
-	protected void keyTyped(char par1, int par2)
+	public void keyTyped(char par1, int par2)
 	{
 		prevMenu.setKey(Keyboard.getKeyName(par2));
 		mc.displayGuiScreen(prevMenu);

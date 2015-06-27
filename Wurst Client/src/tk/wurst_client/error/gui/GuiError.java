@@ -72,7 +72,7 @@ public class GuiError extends GuiScreen
 	}
 	
 	@Override
-	protected void actionPerformed(GuiButton button) throws IOException
+	public void actionPerformed(GuiButton button)
 	{
 		if(!button.enabled)
 			return;

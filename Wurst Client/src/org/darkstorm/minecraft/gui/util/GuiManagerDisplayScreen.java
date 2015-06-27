@@ -1,7 +1,6 @@
 package org.darkstorm.minecraft.gui.util;
 
 import java.awt.Rectangle;
-import java.io.IOException;
 
 import net.minecraft.client.gui.GuiScreen;
 
@@ -25,7 +24,7 @@ public class GuiManagerDisplayScreen extends GuiScreen
 	}
 	
 	@Override
-	protected void mouseClicked(int x, int y, int button) throws IOException
+	public void mouseClicked(int x, int y, int button)
 	{
 		super.mouseClicked(x, y, button);
 		for(Frame frame : guiManager.getFrames())

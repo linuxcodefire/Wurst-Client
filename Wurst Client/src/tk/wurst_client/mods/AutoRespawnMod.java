@@ -29,7 +29,7 @@ public class AutoRespawnMod extends Mod implements DeathListener
 	public void onDeath()
 	{
 		Minecraft.getMinecraft().thePlayer.respawnPlayer();
-		GuiScreen.mc.displayGuiScreen((GuiScreen)null);
+		Minecraft.getMinecraft().displayGuiScreen((GuiScreen)null);
 	}
 	
 	@Override

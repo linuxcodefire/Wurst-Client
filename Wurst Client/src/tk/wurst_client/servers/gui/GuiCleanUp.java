@@ -109,7 +109,7 @@ public class GuiCleanUp extends GuiScreen
 	}
 	
 	@Override
-	protected void actionPerformed(GuiButton clickedButton)
+	public void actionPerformed(GuiButton clickedButton)
 	{
 		if(clickedButton.enabled)
 			if(clickedButton.id == 0)
@@ -218,7 +218,7 @@ public class GuiCleanUp extends GuiScreen
 	 * KeyListener.keyTyped(KeyEvent e).
 	 */
 	@Override
-	protected void keyTyped(char par1, int par2)
+	public void keyTyped(char par1, int par2)
 	{
 		if(par2 == 28 || par2 == 156)
 			actionPerformed((GuiButton)buttonList.get(0));
@@ -226,12 +226,9 @@ public class GuiCleanUp extends GuiScreen
 	
 	/**
 	 * Called when the mouse is clicked.
-	 *
-	 * @throws IOException
 	 */
 	@Override
-	protected void mouseClicked(int par1, int par2, int par3)
-		throws IOException
+	public void mouseClicked(int par1, int par2, int par3)
 	{
 		super.mouseClicked(par1, par2, par3);
 	}
