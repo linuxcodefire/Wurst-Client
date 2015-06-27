@@ -1,3 +1,5 @@
+CLASS none/b net/minecraft/crash/CrashReport
+CLASS none/el net/minecraft/network/NetworkManager
 CLASS none/is net/minecraft/network/play/client/C07PacketPlayerDigging
 	CLASS none/is$a Action
 		FIELD a START_DESTROY_BLOCK Lnone/is$a;
@@ -6,5 +8,131 @@ CLASS none/is net/minecraft/network/play/client/C07PacketPlayerDigging
 		FIELD d DROP_ALL_ITEMS Lnone/is$a;
 		FIELD e DROP_ITEM Lnone/is$a;
 		FIELD f RELEASE_USE_ITEM Lnone/is$a;
+CLASS none/jz net/minecraft/util/ResourceLocation
+CLASS none/nu net/minecraft/profiler/Profiler
+CLASS none/oe net/minecraft/util/IThreadListener
+CLASS none/os net/minecraft/profiler/PlayerUsageSnooper
+CLASS none/ot net/minecraft/profiler/IPlayerUsage
+CLASS none/pl net/minecraft/entity/Entity
+CLASS none/ats net/minecraft/world/storage/ISaveFormat
+CLASS none/aui net/minecraft/util/MovingObjectPosition
 CLASS none/avf net/minecraft/client/Minecraft
+	FIELD A mcProfiler Lnone/nu;
+	FIELD B running Z
+	FIELD C debug Ljava/lang/String;
+	FIELD H debugUpdateTime J
+	FIELD I fpsCounter I
+	FIELD J prevFrameTime J
+	FIELD K logger Lorg/apache/logging/log4j/Logger;
+	FIELD L locationMojangPng Lnone/jz;
+	FIELD M macDisplayModes Ljava/util/List;
+	FIELD N fileResourcepacks Ljava/io/File;
+	FIELD Q currentServerData Lnone/bdf;
+	FIELD R renderEngine Lnone/bmk;
+	FIELD S theMinecraft Lnone/avf;
+	FIELD T fullscreen Z
+	FIELD V hasCrashed Z
+	FIELD W crashReporter Lnone/b;
+	FIELD Y timer Lnone/avm;
+	FIELD Z usageSnooper Lnone/os;
+	FIELD aA defaultResourcePacks Ljava/util/List;
+	FIELD aB mcDefaultResourcePack Lnone/bnb;
+	FIELD aC mcResourcePackRepository Lnone/bnn;
+	FIELD aD mcLanguageManager Lnone/bnt;
+	FIELD aE stream Lnone/bqn;
+	FIELD aF framebufferMc Lnone/bfx;
+	FIELD aG textureMapBlocks Lnone/bmi;
+	FIELD aH mcSoundHandler Lnone/bqa;
+	FIELD aI mcMusicTicker Lnone/bpw;
+	FIELD aJ mojangLogo Lnone/jz;
+	FIELD aK sessionService Lcom/mojang/authlib/minecraft/MinecraftSessionService;
+	FIELD aL skinManager Lnone/bnq;
+	FIELD aM scheduledTasks Ljava/util/Queue;
+	FIELD aO mcThread Ljava/lang/Thread;
+	FIELD aP modelManager Lnone/bov;
+	FIELD aQ blockRendererDispatcher Lnone/bge;
+	FIELD aR debugProfilerName Ljava/lang/String;
+	FIELD a isRunningOnMac Z
+	FIELD aa renderManager Lnone/biv;
+	FIELD ab renderItem Lnone/bji;
+	FIELD ac itemRenderer Lnone/bfo;
+	FIELD ae session Lnone/avn;
+	FIELD af isGamePaused Z
+	FIELD ag leftClickCounter I
+	FIELD ah tempDisplayWidth I
+	FIELD ai tempDisplayHeight I
+	FIELD aj theIntegratedServer Lnone/bpp;
+	FIELD ak fileAssets Ljava/io/File;
+	FIELD al launchedVersion Ljava/lang/String;
+	FIELD am proxy Ljava/net/Proxy;
+	FIELD an saveLoader Lnone/ats;
+	FIELD ao debugFPS I
+	FIELD ap rightClickDelayTimer I
+	FIELD aq serverName Ljava/lang/String;
+	FIELD ar serverPort I
+	FIELD as joinPlayerCounter I
+	FIELD at jvm64bit Z
+	FIELD au isDemo Z
+	FIELD av myNetworkManager Lnone/el;
+	FIELD aw integratedServerIsRunning Z
+	FIELD ax debugCrashKeyPressTime J
+	FIELD ay mcResourceManager Lnone/bnh;
+	FIELD az metadataSerializer_ Lnone/bnz;
+	FIELD b memoryReserve [B
+	FIELD c playerController Lnone/bdb;
+	FIELD d displayWidth I
+	FIELD e displayHeight I
+	FIELD f theWorld Lnone/bdc;
+	FIELD g renderGlobal Lnone/bfs;
+	FIELD h thePlayer Lnone/bex;
+	FIELD i pointedEntity Lnone/pl;
+	FIELD j effectRenderer Lnone/bed;
+	FIELD k fontRendererObj Lnone/avo;
+	FIELD l standardGalacticFontRenderer Lnone/avo;
+	FIELD m currentScreen Lnone/axv;
+	FIELD n loadingScreen Lnone/avj;
+	FIELD o entityRenderer Lnone/bfl;
+	FIELD p guiAchievement Lnone/aye;
+	FIELD q ingameGUI Lnone/avp;
+	FIELD r skipRenderWorld Z
+	FIELD s objectMouseOver Lnone/aui;
+	FIELD t gameSettings Lnone/avi;
+	FIELD u mouseHelper Lnone/avg;
+	FIELD v mcDataDir Ljava/io/File;
+	FIELD w inGameHasFocus Z
+	FIELD x systemTime J
+CLASS none/avg net/minecraft/util/MouseHelper
+CLASS none/avi net/minecraft/client/settings/GameSettings
+CLASS none/avj net/minecraft/client/LoadingScreenRenderer
+CLASS none/avm net/minecraft/util/Timer
+CLASS none/avn net/minecraft/util/Session
+CLASS none/avo net/minecraft/client/gui/FontRenderer
+CLASS none/avp net/minecraft/client/gui/GuiIngame
+CLASS none/axv net/minecraft/client/gui/GuiScreen
+CLASS none/aye net/minecraft/client/gui/achievement/GuiAchievement
+CLASS none/bdb net/minecraft/client/multiplayer/PlayerControllerMP
+CLASS none/bdc net/minecraft/client/multiplayer/WorldClient
+CLASS none/bdf net/minecraft/client/multiplayer/ServerData
+CLASS none/bed net/minecraft/client/particle/EffectRenderer
 CLASS none/beu net/minecraft/client/entity/AbstractClientPlayer
+CLASS none/bex net/minecraft/client/entity/EntityPlayerSP
+CLASS none/bfl net/minecraft/client/renderer/EntityRenderer
+CLASS none/bfo net/minecraft/client/renderer/ItemRenderer
+CLASS none/bfs net/minecraft/client/renderer/RenderGlobal
+CLASS none/bfx net/minecraft/client/shader/Framebuffer
+CLASS none/bge net/minecraft/client/renderer/BlockRendererDispatcher
+CLASS none/biv net/minecraft/client/renderer/entity/RenderManager
+CLASS none/bji net/minecraft/client/renderer/entity/RenderItem
+CLASS none/bmi net/minecraft/client/renderer/texture/TextureMap
+CLASS none/bmk net/minecraft/client/renderer/texture/TextureManager
+CLASS none/bnb net/minecraft/client/resources/DefaultResourcePack
+CLASS none/bnh net/minecraft/client/resources/IReloadableResourceManager
+CLASS none/bnn net/minecraft/client/resources/ResourcePackRepository
+CLASS none/bnq net/minecraft/client/resources/SkinManager
+CLASS none/bnt net/minecraft/client/resources/LanguageManager
+CLASS none/bnz net/minecraft/client/resources/data/IMetadataSerializer
+CLASS none/bov net/minecraft/client/resources/model/ModelManager
+CLASS none/bpp net/minecraft/server/integrated/IntegratedServer
+CLASS none/bpw net/minecraft/client/audio/MusicTicker
+CLASS none/bqa net/minecraft/client/audio/SoundHandler
+CLASS none/bqn net/minecraft/client/stream/IStream
