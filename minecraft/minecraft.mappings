@@ -3,8 +3,307 @@ CLASS none/n net/minecraft/command/ICommandSender
 CLASS none/o net/minecraft/command/CommandResultStats
 CLASS none/ck net/minecraft/util/BlockPos
 CLASS none/cp net/minecraft/util/RegistryNamespacedDefaultedByKey
+CLASS none/cr net/minecraft/util/EnumFacing
+	FIELD a DOWN Lnone/cr;
+	FIELD b UP Lnone/cr;
+	FIELD c NORTH Lnone/cr;
+	FIELD d SOUTH Lnone/cr;
+	FIELD e WEST Lnone/cr;
+	FIELD f EAST Lnone/cr;
 CLASS none/cu net/minecraft/util/ObjectIntIdentityMap
 CLASS none/el net/minecraft/network/NetworkManager
+CLASS none/en net/minecraft/network/PacketBuffer
+	METHOD readUnsignedByte readUnsignedByte ()S
+CLASS none/fg net/minecraft/network/Packet
+	METHOD a readPacketData (Lnone/en;)V
+		ARG 0 data
+	METHOD b writePacketData (Lnone/en;)V
+		ARG 0 data
+CLASS none/fj
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fl net/minecraft/network/play/server/S0EPacketSpawnObject
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fm net/minecraft/network/play/server/S11PacketSpawnExperienceOrb
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fn net/minecraft/network/play/server/S2CPacketSpawnGlobalEntity
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fo
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fp
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fq
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fr
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fs
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ft
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fu
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fv
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fw
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fx
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fy
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fz
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ga
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gb
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gc
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gd
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ge
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gf
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gg
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gh
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gi
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gj
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gk
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gl
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gm
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gn
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/go
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gp
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gq
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gr
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gs
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gt
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gu
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gv
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gw net/minecraft/network/play/server/S14PacketEntity
+	CLASS none/gw$a
+		METHOD a readPacketData (Lnone/en;)V
+		METHOD b writePacketData (Lnone/en;)V
+	CLASS none/gw$b
+		METHOD a readPacketData (Lnone/en;)V
+		METHOD b writePacketData (Lnone/en;)V
+	CLASS none/gw$c
+		METHOD a readPacketData (Lnone/en;)V
+		METHOD b writePacketData (Lnone/en;)V
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gx
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gy
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/gz
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ha
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hb
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hc
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hd
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/he
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hf
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hg
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hh
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hi
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hj
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hk
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hl
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hm
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hn
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ho
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hp
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hq
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hr
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hs
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ht
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hu
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hv
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hw
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hx
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hy
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/hz
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ia
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ib
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ic
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/id net/minecraft/network/play/INetHandlerPlayServer
+	METHOD a processPlayer (Lnone/iq;)V
+CLASS none/ie
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ig net/minecraft/network/play/client/C01PacketChatMessage
+	FIELD a message Ljava/lang/String;
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ih
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ii
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ij
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ik
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/il
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/im
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/in
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/io
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ip
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/iq net/minecraft/network/play/client/C03PacketPlayer
+	CLASS none/iq$a C05PacketPlayerLook
+		METHOD a readPacketData (Lnone/en;)V
+		METHOD b writePacketData (Lnone/en;)V
+	CLASS none/iq$b C04PacketPlayerPosition
+		METHOD a readPacketData (Lnone/en;)V
+		METHOD b writePacketData (Lnone/en;)V
+	CLASS none/iq$c C06PacketPlayerPosLook
+		METHOD a readPacketData (Lnone/en;)V
+		METHOD b writePacketData (Lnone/en;)V
+	FIELD a x D
+	FIELD b y D
+	FIELD c z D
+	FIELD d yaw F
+	FIELD e pitch F
+	FIELD f onGround Z
+	FIELD g rotating Z
+	METHOD <init> (Z)V
+		ARG 0 onGround
+	METHOD a readPacketData (Lnone/en;)V
+		ARG 0 data
+	METHOD a processPacket (Lnone/id;)V
+		ARG 0 handler
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ir
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
 CLASS none/is net/minecraft/network/play/client/C07PacketPlayerDigging
 	CLASS none/is$a Action
 		FIELD a START_DESTROY_BLOCK Lnone/is$a;
@@ -13,6 +312,68 @@ CLASS none/is net/minecraft/network/play/client/C07PacketPlayerDigging
 		FIELD d DROP_ALL_ITEMS Lnone/is$a;
 		FIELD e DROP_ITEM Lnone/is$a;
 		FIELD f RELEASE_USE_ITEM Lnone/is$a;
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/it
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/iu
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/iv
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/iw
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ix
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/iy
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/iz
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ja
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/jb
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/jd
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/jh
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/ji
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/jj
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/jk
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/jm
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/jn
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/jr
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/js net/minecraft/network/status/server/S00PacketServerInfo
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/jv net/minecraft/network/status/client/C01PacketPing
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
+CLASS none/jw
+	METHOD a readPacketData (Lnone/en;)V
+	METHOD b writePacketData (Lnone/en;)V
 CLASS none/jz net/minecraft/util/ResourceLocation
 CLASS none/lf net/minecraft/world/WorldServer
 	METHOD a addScheduledTask (Ljava/lang/Runnable;)Lcom/google/common/util/concurrent/ListenableFuture;
@@ -20,8 +381,11 @@ CLASS none/lf net/minecraft/world/WorldServer
 CLASS none/lg
 	METHOD t_ onUpdate ()V
 	METHOD v isSpectator ()Z
+CLASS none/ln
+	METHOD a processPlayer (Lnone/iq;)V
 CLASS none/nu net/minecraft/profiler/Profiler
 	METHOD a startSection (Ljava/lang/String;)V
+CLASS none/nx net/minecraft/util/IStringSerializable
 CLASS none/oe net/minecraft/util/IThreadListener
 	METHOD a addScheduledTask (Ljava/lang/Runnable;)Lcom/google/common/util/concurrent/ListenableFuture;
 	METHOD aI isCallingFromMinecraftThread ()Z
