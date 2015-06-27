@@ -412,8 +412,93 @@ CLASS none/alw
 	METHOD c getMetaFromState (Lnone/ama;)I
 CLASS none/ama net/minecraft/block/state/IBlockState
 CLASS none/amb net/minecraft/block/state/BlockState
+CLASS none/ark net/minecraft/block/material/MaterialLogic
+	METHOD a isSolid ()Z
+	METHOD b blocksLight ()Z
+	METHOD c blocksMovement ()Z
+CLASS none/arl net/minecraft/block/material/MaterialTransparent/MaterialTransparent
+	METHOD a isSolid ()Z
+	METHOD b blocksLight ()Z
+	METHOD c blocksMovement ()Z
+CLASS none/arm net/minecraft/block/material/MaterialLiquid/MaterialLiquid
+	METHOD a isSolid ()Z
+	METHOD c blocksMovement ()Z
+	METHOD d isLiquid ()Z
 CLASS none/arn net/minecraft/block/material/Material
+	CLASS none/arn$1
+		METHOD c blocksMovement ()Z
+	FIELD A cactus Lnone/arn;
+	FIELD B clay Lnone/arn;
+	FIELD C gourd Lnone/arn;
+	FIELD D dragonEgg Lnone/arn;
+	FIELD E portal Lnone/arn;
+	FIELD F cake Lnone/arn;
+	FIELD G web Lnone/arn;
+	FIELD H piston Lnone/arn;
+	FIELD I barrier Lnone/arn;
+	FIELD J canBurn Z
+	FIELD K replaceable Z
+	FIELD L isTranslucent Z
+	FIELD M materialMapColor Lnone/aro;
+	FIELD N requiresNoTool Z
+	FIELD O mobilityFlag I
+	FIELD P isAdventureModeExempt Z
+	FIELD a air Lnone/arn;
+	FIELD b grass Lnone/arn;
+	FIELD c ground Lnone/arn;
+	FIELD d wood Lnone/arn;
+	FIELD e rock Lnone/arn;
+	FIELD f iron Lnone/arn;
+	FIELD g anvil Lnone/arn;
+	FIELD h water Lnone/arn;
+	FIELD i lava Lnone/arn;
+	FIELD j leaves Lnone/arn;
+	FIELD k plants Lnone/arn;
+	FIELD l vine Lnone/arn;
+	FIELD m sponge Lnone/arn;
+	FIELD n cloth Lnone/arn;
+	FIELD o fire Lnone/arn;
+	FIELD p sand Lnone/arn;
+	FIELD q circuits Lnone/arn;
+	FIELD r carpet Lnone/arn;
+	FIELD s glass Lnone/arn;
+	FIELD t redstoneLight Lnone/arn;
+	FIELD u tnt Lnone/arn;
+	FIELD v coral Lnone/arn;
+	FIELD w rice Lnone/arn;
+	FIELD x packedIce Lnone/arn;
+	FIELD y snow Lnone/arn;
+	FIELD z craftedSnow Lnone/arn;
+	METHOD <init> (Lnone/aro;)V
+		ARG 0 mapColor
+	METHOD a isSolid ()Z
+	METHOD b blocksLight ()Z
+	METHOD c blocksMovement ()Z
+	METHOD d isLiquid ()Z
+	METHOD f setRequiresTool ()Lnone/arn;
+	METHOD g setBurning ()Lnone/arn;
+	METHOD h getCanBurn ()Z
+	METHOD i setReplaceable ()Lnone/arn;
+	METHOD j isReplaceable ()Z
+	METHOD k isOpaque ()Z
+	METHOD l isToolNotRequired ()Z
+	METHOD m getMaterialMobility ()I
+	METHOD n setNoPushMobility ()Lnone/arn;
+	METHOD o setImmovableMobility ()Lnone/arn;
+	METHOD p setAdventureModeExempt ()Lnone/arn;
+	METHOD r getMaterialMapColor ()Lnone/aro;
+	METHOD s setTranslucent ()Lnone/arn;
 CLASS none/aro net/minecraft/block/material/MapColor
+	FIELD b airColor Lnone/aro;
+	FIELD c grassColor Lnone/aro;
+	FIELD h ironColor Lnone/aro;
+	FIELD l dirtColor Lnone/aro;
+	FIELD m stoneColor Lnone/aro;
+	FIELD o woodColor Lnone/aro;
+CLASS none/arp net/minecraft/block/material/MaterialPortal/MaterialPortal
+	METHOD a isSolid ()Z
+	METHOD b blocksLight ()Z
+	METHOD c blocksMovement ()Z
 CLASS none/ats net/minecraft/world/storage/ISaveFormat
 CLASS none/aui net/minecraft/util/MovingObjectPosition
 CLASS none/avd net/minecraft/client/renderer/RenderHelper
