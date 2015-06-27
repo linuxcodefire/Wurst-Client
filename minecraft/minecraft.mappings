@@ -1,4 +1,7 @@
 CLASS none/b net/minecraft/crash/CrashReport
+CLASS none/ck net/minecraft/util/BlockPos
+CLASS none/cp net/minecraft/util/RegistryNamespacedDefaultedByKey
+CLASS none/cu net/minecraft/util/ObjectIntIdentityMap
 CLASS none/el net/minecraft/network/NetworkManager
 CLASS none/is net/minecraft/network/play/client/C07PacketPlayerDigging
 	CLASS none/is$a Action
@@ -21,17 +24,396 @@ CLASS none/ot net/minecraft/profiler/IPlayerUsage
 	METHOD ac isSnooperEnabled ()Z
 	METHOD b addServerTypeToSnooper (Lnone/os;)V
 CLASS none/pl net/minecraft/entity/Entity
+CLASS none/za net/minecraft/creativetab/CreativeTabs
 CLASS none/zx net/minecraft/item/Item
 CLASS none/zy
+CLASS none/adr net/minecraft/world/IBlockAccess
+CLASS none/afa
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/afb
+	CLASS none/afb$a
+		METHOD a getStateFromMeta (I)Lnone/ama;
+		METHOD c getMetaFromState (Lnone/ama;)I
+	CLASS none/afb$b
+		METHOD a getStateFromMeta (I)Lnone/ama;
+		METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/afh
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
 CLASS none/afi net/minecraft/block/Block
+	CLASS none/afi$b SoundType
+	FIELD H stepSound Lnone/afi$b;
+	FIELD I blockParticleGravity F
+	FIELD J blockMaterial Lnone/arn;
+	FIELD K mapColor Lnone/aro;
+	FIELD L slipperiness F
+	FIELD M blockState Lnone/amb;
+	FIELD N defaultBlockState Lnone/ama;
+	FIELD O unlocalizedName Ljava/lang/String;
+	FIELD a AIR_ID Lnone/jz;
+	FIELD b displayOnCreativeTab Lnone/za;
+	FIELD c blockRegistry Lnone/cp;
+	FIELD d BLOCK_STATE_IDS Lnone/cu;
+	FIELD e soundTypeStone Lnone/afi$b;
+	FIELD f soundTypeWood Lnone/afi$b;
+	FIELD g soundTypeGravel Lnone/afi$b;
+	FIELD h soundTypeGrass Lnone/afi$b;
+	FIELD i soundTypePiston Lnone/afi$b;
+	FIELD j soundTypeMetal Lnone/afi$b;
+	FIELD k soundTypeGlass Lnone/afi$b;
+	FIELD l soundTypeCloth Lnone/afi$b;
+	FIELD m soundTypeSand Lnone/afi$b;
+	FIELD n soundTypeSnow Lnone/afi$b;
+	FIELD o soundTypeLadder Lnone/afi$b;
+	FIELD p soundTypeAnvil Lnone/afi$b;
+	FIELD q soundTypeSlime Lnone/afi$b;
+	FIELD r fullBlock Z
+	FIELD s lightOpacity I
+	FIELD t translucent Z
+	FIELD u lightValue I
+	FIELD v useNeighborBrightness Z
+	METHOD <init> (Lnone/arn;)V
+		ARG 0 material
+	METHOD <init> (Lnone/arn;Lnone/aro;)V
+		ARG 0 material
+		ARG 1 mapColor
+	METHOD Q rgetDefaultState ()Lnone/ama;
+	METHOD a getStateFromMeta (I)Lnone/ama;
+		ARG 0 meta
 	METHOD a getIdFromBlock (Lnone/afi;)I
 		ARG 0 block
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+		ARG 0 state
+		ARG 1 blockAccess
+		ARG 2 pos
 	METHOD a getBlockFromItem (Lnone/zx;)Lnone/afi;
 		ARG 0 item
 	METHOD b getBlockFromName (Ljava/lang/String;)Lnone/afi;
 		ARG 0 name
 	METHOD c getBlockById (I)Lnone/afi;
 		ARG 0 id
+	METHOD c getMetaFromState (Lnone/ama;)I
+		ARG 0 state
+	METHOD f getStateId (Lnone/ama;)I
+		ARG 0 state
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+		ARG 0 state
+	METHOD o isFullBlock ()Z
+	METHOD p getLightOpacity ()I
+	METHOD q isTranslucent ()Z
+	METHOD r getLightValue ()I
+	METHOD s getUseNeighborBrightness ()Z
+	METHOD t getMaterial ()Lnone/arn;
+CLASS none/afm
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/afo
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/afp
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/afq
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/afs
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aft
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/afv
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/afw
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/afx
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/afy
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aga
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/agb
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/agc
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/agd
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/agg
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/agh
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/agi
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/agj
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ago
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/agp
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/agq
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/agt
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/agu
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/agv
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/agw
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/agx
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/agy
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ahc
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ahe
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/ahf
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ahg
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/ahm
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/ahn
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aho
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ahp
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/ahr
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ahs
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ahv
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ahw
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aia
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aic
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aid
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/aie
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aif
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/aig
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aih
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/aii
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/aik
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/ail
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aim
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/aip
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/aiq
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ait
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aiu
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aiv
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/aiw
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aix
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/aiy
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aja
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ajc
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ajf
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ajg
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aji
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/ajj
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/ajk
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ajl
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/ajn
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ajq
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ajs
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ajt
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/aju
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/ajv
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/ajw
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ajy
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ajz
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/aka
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/akc
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/akd
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ake
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/akf
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/akg
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aki
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/akj
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/akk
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/akl
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/akm
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD a getActualState (Lnone/ama;Lnone/adr;Lnone/ck;)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/akn
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ako
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/akq
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/aks
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/akt
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/alt
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/alu
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/alw
+	METHOD a getStateFromMeta (I)Lnone/ama;
+	METHOD c getMetaFromState (Lnone/ama;)I
+CLASS none/ama net/minecraft/block/state/IBlockState
+CLASS none/amb net/minecraft/block/state/BlockState
+CLASS none/arn net/minecraft/block/material/Material
+CLASS none/aro net/minecraft/block/material/MapColor
 CLASS none/ats net/minecraft/world/storage/ISaveFormat
 CLASS none/aui net/minecraft/util/MovingObjectPosition
 CLASS none/avf net/minecraft/client/Minecraft
