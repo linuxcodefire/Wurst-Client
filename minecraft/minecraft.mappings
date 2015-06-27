@@ -26,7 +26,7 @@ CLASS none/ot net/minecraft/profiler/IPlayerUsage
 CLASS none/pl net/minecraft/entity/Entity
 CLASS none/za net/minecraft/creativetab/CreativeTabs
 CLASS none/zx net/minecraft/item/Item
-CLASS none/zy
+CLASS none/zy net/minecraft/item/ItemStack
 CLASS none/adr net/minecraft/world/IBlockAccess
 CLASS none/afa
 	METHOD a getStateFromMeta (I)Lnone/ama;
@@ -416,7 +416,11 @@ CLASS none/arn net/minecraft/block/material/Material
 CLASS none/aro net/minecraft/block/material/MapColor
 CLASS none/ats net/minecraft/world/storage/ISaveFormat
 CLASS none/aui net/minecraft/util/MovingObjectPosition
+CLASS none/avd net/minecraft/client/renderer/RenderHelper
+	METHOD a disableStandardItemLighting ()V
 CLASS none/avf net/minecraft/client/Minecraft
+	CLASS none/avf$8
+		METHOD a confirmClicked (ZI)V
 	CLASS none/avf$10
 		METHOD run run ()V
 	FIELD A mcProfiler Lnone/nu;
@@ -618,10 +622,437 @@ CLASS none/avm net/minecraft/util/Timer
 CLASS none/avn net/minecraft/util/Session
 CLASS none/avo net/minecraft/client/gui/FontRenderer
 CLASS none/avp net/minecraft/client/gui/GuiIngame
+CLASS none/avq net/minecraft/client/gui/Gui
+	METHOD a drawGradientRect (IIIIII)V
+CLASS none/avt net/minecraft/client/gui/GuiButton
+CLASS none/aws
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a drawGradientRect (IIIIII)V
+	METHOD a mouseClickMove (IIIJ)V
+	METHOD a drawCreativeTabHoveringText (Ljava/lang/String;II)V
+	METHOD a drawHoveringText (Ljava/util/List;II)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD a renderToolTip (Lnone/zy;II)V
+	METHOD a confirmClicked (ZI)V
+	METHOD b initGui ()V
+	METHOD b mouseReleased (III)V
+	METHOD b_ drawWorldBackground (I)V
+	METHOD c drawDefaultBackground ()V
+	METHOD d doesGuiPauseGame ()Z
+	METHOD e updateScreen ()V
+	METHOD k handleMouseInput ()V
+	METHOD l handleKeyboardInput ()V
+	METHOD m onGuiClosed ()V
+CLASS none/awv
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+CLASS none/aww
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD b initGui ()V
+	METHOD d doesGuiPauseGame ()Z
+	METHOD e updateScreen ()V
+	METHOD k handleMouseInput ()V
+	METHOD m onGuiClosed ()V
+CLASS none/awx
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+CLASS none/awy net/minecraft/client/gui/GuiYesNoCallback
+	METHOD a confirmClicked (ZI)V
+CLASS none/awz
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+CLASS none/axa
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+CLASS none/axb
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD k handleMouseInput ()V
+CLASS none/axc
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+	METHOD m onGuiClosed ()V
+CLASS none/axd
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+	METHOD k handleMouseInput ()V
+	METHOD m onGuiClosed ()V
+CLASS none/axe
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD b mouseReleased (III)V
+	METHOD k handleMouseInput ()V
+CLASS none/axf
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD a confirmClicked (ZI)V
+	METHOD b initGui ()V
+	METHOD d doesGuiPauseGame ()Z
+	METHOD e updateScreen ()V
+CLASS none/axg
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD c drawDefaultBackground ()V
+	METHOD e updateScreen ()V
+CLASS none/axh
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+	METHOD m onGuiClosed ()V
+CLASS none/axi
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+CLASS none/axj
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+	METHOD m onGuiClosed ()V
+CLASS none/axk
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+CLASS none/axl
+	METHOD a keyTyped (CI)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+CLASS none/axm
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD k handleMouseInput ()V
+CLASS none/axo
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD a confirmClicked (ZI)V
+	METHOD b initGui ()V
+CLASS none/axp
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+CLASS none/axq
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+CLASS none/axr
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+	METHOD k handleMouseInput ()V
+	METHOD m onGuiClosed ()V
+CLASS none/axs
+	METHOD a drawScreen (IIF)V
+CLASS none/axt
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD b initGui ()V
+	METHOD d doesGuiPauseGame ()Z
+	METHOD e updateScreen ()V
+CLASS none/axu
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+	METHOD m onGuiClosed ()V
 CLASS none/axv net/minecraft/client/gui/GuiScreen
+	FIELD a logger Lorg/apache/logging/log4j/Logger;
+	FIELD f protocols Ljava/util/Set;
+	FIELD g splitter Lcom/google/common/base/Splitter;
+	FIELD h selectedButton Lnone/avt;
+	FIELD i eventButton I
+	FIELD j mc Lnone/avf;
+	FIELD k itemRender Lnone/bji;
+	FIELD l width I
+	FIELD m height I
+	FIELD n buttonList Ljava/util/List;
+	FIELD o labelList Ljava/util/List;
+	FIELD p allowUserInput Z
+	FIELD q fontRendererObj Lnone/avo;
+	FIELD r lastMouseEvent J
+	FIELD s touchValue I
+	FIELD t uri Ljava/net/URI;
+	METHOD a keyTyped (CI)V
+		ARG 0 typedChar
+		ARG 1 keyCode
+	METHOD a drawScreen (IIF)V
+		ARG 0 mouseX
+		ARG 1 mouseY
+		ARG 2 partialTicks
+	METHOD a mouseClicked (III)V
+		ARG 0 x
+		ARG 1 y
+		ARG 2 button
+	METHOD a mouseClickMove (IIIJ)V
+		ARG 0 x
+		ARG 1 y
+		ARG 2 button
+		ARG 3 timeSinceLastClick
+	METHOD a drawCreativeTabHoveringText (Ljava/lang/String;II)V
+		ARG 0 tabName
+		ARG 1 x
+		ARG 2 y
+	METHOD a openLink (Ljava/net/URI;)V
+		ARG 0 link
+	METHOD a drawHoveringText (Ljava/util/List;II)V
+		ARG 0 textLines
+		ARG 1 x
+		ARG 2 y
+	METHOD a setWorldAndResolution (Lnone/avf;II)V
+		ARG 0 mc
+		ARG 1 width
+		ARG 2 height
+	METHOD a actionPerformed (Lnone/avt;)V
+		ARG 0 button
+	METHOD a renderToolTip (Lnone/zy;II)V
+		ARG 0 stack
+		ARG 1 x
+		ARG 2 y
+	METHOD a confirmClicked (ZI)V
+		ARG 0 result
+		ARG 1 id
+	METHOD b initGui ()V
+	METHOD b mouseReleased (III)V
+		ARG 0 x
+		ARG 1 y
+		ARG 2 button
+	METHOD b_ drawWorldBackground (I)V
+		ARG 0 tint
+	METHOD c drawDefaultBackground ()V
+	METHOD c drawBackground (I)V
+		ARG 0 tint
+	METHOD d doesGuiPauseGame ()Z
+	METHOD e updateScreen ()V
+	METHOD e setClipboardString (Ljava/lang/String;)V
+		ARG 0 clipboardString
+	METHOD k handleMouseInput ()V
+	METHOD l handleKeyboardInput ()V
+	METHOD m onGuiClosed ()V
+	METHOD o getClipboardString ()Ljava/lang/String;
+	METHOD p handleInput ()V
+	METHOD q isCtrlKeyDown ()Z
+	METHOD r risShiftKeyDown ()Z
+CLASS none/axw
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD a confirmClicked (ZI)V
+	METHOD b initGui ()V
+	METHOD k handleMouseInput ()V
+CLASS none/axx
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+CLASS none/axy
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+CLASS none/axz
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD k handleMouseInput ()V
+CLASS none/aya
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+CLASS none/ayb
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD a confirmClicked (ZI)V
+	METHOD b initGui ()V
+	METHOD d doesGuiPauseGame ()Z
+	METHOD e updateScreen ()V
+CLASS none/ayc
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD b mouseReleased (III)V
+	METHOD k handleMouseInput ()V
+CLASS none/ayd
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD b initGui ()V
+	METHOD d doesGuiPauseGame ()Z
+	METHOD e updateScreen ()V
 CLASS none/aye net/minecraft/client/gui/achievement/GuiAchievement
+CLASS none/ayf
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD d doesGuiPauseGame ()Z
+	METHOD e updateScreen ()V
+CLASS none/ayg
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD d doesGuiPauseGame ()Z
+	METHOD k handleMouseInput ()V
+CLASS none/ayk
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD b mouseReleased (III)V
+	METHOD k handleMouseInput ()V
+CLASS none/aym
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a mouseClickMove (IIIJ)V
+	METHOD b initGui ()V
+	METHOD b mouseReleased (III)V
+	METHOD d doesGuiPauseGame ()Z
+	METHOD e updateScreen ()V
+	METHOD m onGuiClosed ()V
+CLASS none/ayn
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD b initGui ()V
+	METHOD m onGuiClosed ()V
+CLASS none/ayo
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+CLASS none/ayp
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+	METHOD m onGuiClosed ()V
+CLASS none/ayr
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+	METHOD m onGuiClosed ()V
+CLASS none/ayv
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD a renderToolTip (Lnone/zy;II)V
+	METHOD b initGui ()V
+	METHOD b mouseReleased (III)V
+	METHOD e updateScreen ()V
+	METHOD k handleMouseInput ()V
+	METHOD m onGuiClosed ()V
+CLASS none/ayx
+	METHOD a drawScreen (IIF)V
+	METHOD b initGui ()V
+CLASS none/ayz
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD e updateScreen ()V
+CLASS none/azc
+	METHOD a drawScreen (IIF)V
+CLASS none/azd
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+CLASS none/aze
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+CLASS none/azf
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD e updateScreen ()V
+	METHOD m onGuiClosed ()V
+CLASS none/azi
+	METHOD a keyTyped (CI)V
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD a confirmClicked (ZI)V
+	METHOD b initGui ()V
+	METHOD b mouseReleased (III)V
+	METHOD e updateScreen ()V
+	METHOD k handleMouseInput ()V
+	METHOD m onGuiClosed ()V
+CLASS none/azp
+	METHOD a drawScreen (IIF)V
+	METHOD a mouseClicked (III)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD b mouseReleased (III)V
+	METHOD k handleMouseInput ()V
+CLASS none/azz
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD k handleMouseInput ()V
+	METHOD m onGuiClosed ()V
+CLASS none/baa
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+CLASS none/bab
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
+	METHOD m onGuiClosed ()V
+CLASS none/bac
+	METHOD a drawScreen (IIF)V
+	METHOD a actionPerformed (Lnone/avt;)V
+	METHOD b initGui ()V
 CLASS none/bap net/minecraft/client/main/GameConfiguration
 CLASS none/bcz net/minecraft/client/network/NetHandlerPlayClient
+	CLASS none/bcz$3
+		CLASS none/bcz$3$1
+			METHOD a confirmClicked (ZI)V
 CLASS none/bdb net/minecraft/client/multiplayer/PlayerControllerMP
 CLASS none/bdc net/minecraft/client/multiplayer/WorldClient
 CLASS none/bdf net/minecraft/client/multiplayer/ServerData
@@ -629,6 +1060,10 @@ CLASS none/bed net/minecraft/client/particle/EffectRenderer
 CLASS none/beu net/minecraft/client/entity/AbstractClientPlayer
 CLASS none/bex net/minecraft/client/entity/EntityPlayerSP
 CLASS none/bfl net/minecraft/client/renderer/EntityRenderer
+CLASS none/bfm net/minecraft/client/renderer/GlStateManager
+	METHOD C disableRescaleNormal ()V
+	METHOD f disableLighting ()V
+	METHOD i disableDepth ()V
 CLASS none/bfo net/minecraft/client/renderer/ItemRenderer
 CLASS none/bfs net/minecraft/client/renderer/RenderGlobal
 CLASS none/bfx net/minecraft/client/shader/Framebuffer
