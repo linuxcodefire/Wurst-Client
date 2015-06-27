@@ -9,14 +9,24 @@ CLASS none/is net/minecraft/network/play/client/C07PacketPlayerDigging
 		FIELD e DROP_ITEM Lnone/is$a;
 		FIELD f RELEASE_USE_ITEM Lnone/is$a;
 CLASS none/jz net/minecraft/util/ResourceLocation
+CLASS none/lf
+	METHOD a addScheduledTask (Ljava/lang/Runnable;)Lcom/google/common/util/concurrent/ListenableFuture;
+	METHOD aI isCallingFromMinecraftThread ()Z
 CLASS none/nu net/minecraft/profiler/Profiler
 CLASS none/oe net/minecraft/util/IThreadListener
+	METHOD a addScheduledTask (Ljava/lang/Runnable;)Lcom/google/common/util/concurrent/ListenableFuture;
+	METHOD aI isCallingFromMinecraftThread ()Z
 CLASS none/os net/minecraft/profiler/PlayerUsageSnooper
 CLASS none/ot net/minecraft/profiler/IPlayerUsage
+	METHOD ac isSnooperEnabled ()Z
+	METHOD b addServerTypeToSnooper (Lnone/os;)V
 CLASS none/pl net/minecraft/entity/Entity
+CLASS none/zy
 CLASS none/ats net/minecraft/world/storage/ISaveFormat
 CLASS none/aui net/minecraft/util/MovingObjectPosition
 CLASS none/avf net/minecraft/client/Minecraft
+	CLASS none/avf$10
+		METHOD run run ()V
 	FIELD A mcProfiler Lnone/nu;
 	FIELD B running Z
 	FIELD C debug Ljava/lang/String;
@@ -27,6 +37,7 @@ CLASS none/avf net/minecraft/client/Minecraft
 	FIELD L locationMojangPng Lnone/jz;
 	FIELD M macDisplayModes Ljava/util/List;
 	FIELD N fileResourcepacks Ljava/io/File;
+	FIELD O twitchDetails Lcom/mojang/authlib/properties/PropertyMap;
 	FIELD Q currentServerData Lnone/bdf;
 	FIELD R renderEngine Lnone/bmk;
 	FIELD S theMinecraft Lnone/avf;
@@ -101,6 +112,113 @@ CLASS none/avf net/minecraft/client/Minecraft
 	FIELD v mcDataDir Ljava/io/File;
 	FIELD w inGameHasFocus Z
 	FIELD x systemTime J
+	METHOD <init> (Lnone/bap;)V
+		ARG 0 gameConfig
+	METHOD A getMinecraft ()Lnone/avf;
+	METHOD C getGLMaximumTextureSize ()I
+	METHOD D getCurrentServerData ()Lnone/bdf;
+	METHOD E isIntegratedServerRunning ()Z
+	METHOD F isSingleplayer ()Z
+	METHOD G getIntegratedServer ()Lnone/bpp;
+	METHOD H stopIntegratedServer ()V
+	METHOD I getPlayerUsageSnooper ()Lnone/os;
+	METHOD J getSystemTime ()J
+	METHOD K isFullScreen ()Z
+	METHOD L getSession ()Lnone/avn;
+	METHOD M getTwitchDetails ()Lcom/mojang/authlib/properties/PropertyMap;
+	METHOD O getProxy ()Ljava/net/Proxy;
+	METHOD P getTextureManager ()Lnone/bmk;
+	METHOD Q getResourceManager ()Lnone/bnj;
+	METHOD R getResourcePackRepository ()Lnone/bnn;
+	METHOD S getLanguageManager ()Lnone/bnt;
+	METHOD T getTextureMapBlocks ()Lnone/bmi;
+	METHOD U isJava64bit ()Z
+	METHOD V isGamePaused ()Z
+	METHOD W getSoundHandler ()Lnone/bqa;
+	METHOD X getAmbientMusicType ()Lnone/bpw$a;
+	METHOD Y getTwitchStream ()Lnone/bqn;
+	METHOD Z dispatchKeypresses ()V
+	METHOD a run ()V
+	METHOD a setDimensionAndSpawnPlayer (I)V
+		ARG 0 dimension
+	METHOD a resize (II)V
+		ARG 0 width
+		ARG 1 height
+	METHOD a scaledTessellator (IIIIIIIIII)V
+	METHOD a displayDebugInfo (J)V
+		ARG 0 elapsedTicksTime
+	METHOD a readImageToBuffer (Ljava/io/InputStream;)Ljava/nio/ByteBuffer;
+		ARG 0 imageStream
+	METHOD a addScheduledTask (Ljava/lang/Runnable;)Lcom/google/common/util/concurrent/ListenableFuture;
+		ARG 0 task
+	METHOD a launchIntegratedServer (Ljava/lang/String;Ljava/lang/String;Lnone/adq;)V
+		ARG 0 folderName
+		ARG 1 worldName
+	METHOD a addScheduledTask (Ljava/util/concurrent/Callable;)Lcom/google/common/util/concurrent/ListenableFuture;
+		ARG 0 task
+	METHOD a displayGuiScreen (Lnone/axv;)V
+		ARG 0 guiScreen
+	METHOD a crashed (Lnone/b;)V
+		ARG 0 report
+	METHOD a loadWorld (Lnone/bdc;)V
+		ARG 0 world
+	METHOD a loadWorld (Lnone/bdc;Ljava/lang/String;)V
+		ARG 0 world
+		ARG 1 loadingMessage
+	METHOD a setServerData (Lnone/bdf;)V
+		ARG 0 serverData
+	METHOD aI isCallingFromMinecraftThread ()Z
+	METHOD aa getSessionService ()Lcom/mojang/authlib/minecraft/MinecraftSessionService;
+	METHOD ab getSkinManager ()Lnone/bnq;
+	METHOD ac isSnooperEnabled ()Z
+	METHOD ae getBlockRendererDispatcher ()Lnone/bge;
+	METHOD af getRenderManager ()Lnone/biv;
+	METHOD ag getRenderItem ()Lnone/bji;
+	METHOD ai getDebugFPS ()I
+	METHOD am startGame ()V
+	METHOD ap startLWJGL3 ()V
+	METHOD aq startLWJGL2 ()V
+	METHOD ar startLWJGL1 ()V
+	METHOD as isJvm64bit ()Z
+	METHOD at startTimerHackThread ()V
+	METHOD au updateDisplayMode ()V
+	METHOD av runGameLoop ()V
+	METHOD aw clickMouse ()V
+	METHOD ax rightClickMouse ()V
+	METHOD ay updateFramebufferSize ()V
+	METHOD az middleClickMouse ()V
+	METHOD b getFramebuffer ()Lnone/bfx;
+	METHOD b updateDebugProfilerName (I)V
+		ARG 0 keyCount
+	METHOD b checkGLError (Ljava/lang/String;)V
+		ARG 0 message
+	METHOD b addGraphicsAndWorldToCrashReport (Lnone/b;)Lnone/b;
+		ARG 0 report
+	METHOD b addServerTypeToSnooper (Lnone/os;)V
+		ARG 0 snooper
+	METHOD b sendClickBlockToController (Z)V
+		ARG 0 leftClick
+	METHOD c getLaunchedVersion ()Ljava/lang/String;
+	METHOD c displayCrashReport (Lnone/b;)V
+		ARG 0 report
+	METHOD d isUnicode ()Z
+	METHOD e refreshResources ()V
+	METHOD f getSaveLoader ()Lnone/ats;
+	METHOD g shutdownMinecraftApplet ()V
+	METHOD j getLimitFramerate ()I
+	METHOD k isFramerateLimitBelowMax ()Z
+	METHOD l freeMemory ()V
+	METHOD m shutdown ()V
+	METHOD n setIngameFocus ()V
+	METHOD o setIngameNotInFocus ()V
+	METHOD p displayInGameMenu ()V
+	METHOD q toggleFullscreen ()V
+	METHOD s runTick ()V
+	METHOD t isDemo ()Z
+	METHOD u getNetHandler ()Lnone/bcz;
+	METHOD v isGuiEnabled ()Z
+	METHOD w isFancyGraphicsEnabled ()Z
+	METHOD x isAmbientOcclusionEnabled ()Z
 CLASS none/avg net/minecraft/util/MouseHelper
 CLASS none/avi net/minecraft/client/settings/GameSettings
 CLASS none/avj net/minecraft/client/LoadingScreenRenderer
@@ -110,6 +228,8 @@ CLASS none/avo net/minecraft/client/gui/FontRenderer
 CLASS none/avp net/minecraft/client/gui/GuiIngame
 CLASS none/axv net/minecraft/client/gui/GuiScreen
 CLASS none/aye net/minecraft/client/gui/achievement/GuiAchievement
+CLASS none/bap net/minecraft/client/main/GameConfiguration
+CLASS none/bcz net/minecraft/client/network/NetHandlerPlayClient
 CLASS none/bdb net/minecraft/client/multiplayer/PlayerControllerMP
 CLASS none/bdc net/minecraft/client/multiplayer/WorldClient
 CLASS none/bdf net/minecraft/client/multiplayer/ServerData
@@ -127,12 +247,20 @@ CLASS none/bmi net/minecraft/client/renderer/texture/TextureMap
 CLASS none/bmk net/minecraft/client/renderer/texture/TextureManager
 CLASS none/bnb net/minecraft/client/resources/DefaultResourcePack
 CLASS none/bnh net/minecraft/client/resources/IReloadableResourceManager
+CLASS none/bnj net/minecraft/client/resources/IResourceManager
 CLASS none/bnn net/minecraft/client/resources/ResourcePackRepository
 CLASS none/bnq net/minecraft/client/resources/SkinManager
 CLASS none/bnt net/minecraft/client/resources/LanguageManager
 CLASS none/bnz net/minecraft/client/resources/data/IMetadataSerializer
 CLASS none/bov net/minecraft/client/resources/model/ModelManager
 CLASS none/bpp net/minecraft/server/integrated/IntegratedServer
+	METHOD ac isSnooperEnabled ()Z
 CLASS none/bpw net/minecraft/client/audio/MusicTicker
+	CLASS none/bpw$a MusicType
 CLASS none/bqa net/minecraft/client/audio/SoundHandler
 CLASS none/bqn net/minecraft/client/stream/IStream
+CLASS net/minecraft/server/MinecraftServer net/minecraft/server/MinecraftServer
+	METHOD a addScheduledTask (Ljava/lang/Runnable;)Lcom/google/common/util/concurrent/ListenableFuture;
+	METHOD aI isCallingFromMinecraftThread ()Z
+	METHOD ac isSnooperEnabled ()Z
+	METHOD b addServerTypeToSnooper (Lnone/os;)V
