@@ -11,6 +11,14 @@ CLASS none/cr net/minecraft/util/EnumFacing
 	FIELD e WEST Lnone/cr;
 	FIELD f EAST Lnone/cr;
 CLASS none/cu net/minecraft/util/ObjectIntIdentityMap
+CLASS none/dp net/minecraft/nbt/NBTTagCompound
+	METHOD a setFloat (Ljava/lang/String;F)V
+	METHOD a setTag (Ljava/lang/String;Lnone/ec;)V
+	METHOD a setBoolean (Ljava/lang/String;Z)V
+	METHOD b hasKey (Ljava/lang/String;I)Z
+	METHOD h getFloat (Ljava/lang/String;)F
+	METHOD m getCompoundTag (Ljava/lang/String;)Lnone/dp;
+	METHOD n getBoolean (Ljava/lang/String;)Z
 CLASS none/el net/minecraft/network/NetworkManager
 CLASS none/en net/minecraft/network/PacketBuffer
 	METHOD readUnsignedByte readUnsignedByte ()S
@@ -488,7 +496,7 @@ CLASS none/pl net/minecraft/entity/Entity
 CLASS none/pq
 	METHOD h entityInit ()V
 	METHOD t_ onUpdate ()V
-CLASS none/ps
+CLASS none/ps net/minecraft/entity/EntityLivingBase
 	METHOD K onEntityUpdate ()V
 	METHOD O kill ()V
 	METHOD d setSprinting (Z)V
@@ -545,7 +553,7 @@ CLASS none/up
 	METHOD h entityInit ()V
 CLASS none/uq
 	METHOD h entityInit ()V
-CLASS none/us
+CLASS none/us net/minecraft/entity/projectile/EntityFishHook
 	METHOD J setDead ()V
 	METHOD h entityInit ()V
 	METHOD i setVelocity (DDD)V
@@ -622,7 +630,54 @@ CLASS none/wf
 	METHOD t_ onUpdate ()V
 CLASS none/wj
 	METHOD h entityInit ()V
+CLASS none/wm net/minecraft/entity/player/PlayerCapabilities
+	FIELD a disableDamage Z
+	FIELD b isFlying Z
+	FIELD c allowFlying Z
+	FIELD d isCreativeMode Z
+	FIELD e allowEdit Z
+	FIELD f flySpeed F
+	FIELD g walkSpeed F
+	METHOD a getFlySpeed ()F
+	METHOD a setFlySpeed (F)V
+		ARG 0 flySpeed
+	METHOD a writeCapabilitiesToNBT (Lnone/dp;)V
+		ARG 0 nbt
+	METHOD b getWalkSpeed ()F
+	METHOD b setPlayerWalkSpeed (F)V
+		ARG 0 walkSpeed
+	METHOD b readCapabilitiesFromNBT (Lnone/dp;)V
+		ARG 0 nbt
+CLASS none/wn net/minecraft/entity/player/InventoryPlayer
 CLASS none/wo net/minecraft/entity/player/EntityPlayer
+	FIELD a theInventoryEnderChest Lnone/ye;
+	FIELD bA capabilities Lnone/wm;
+	FIELD bB experienceLevel I
+	FIELD bC experienceTotal I
+	FIELD bD experience F
+	FIELD bE speedOnGround F
+	FIELD bF speedInAir F
+	FIELD bG fishEntity Lnone/us;
+	FIELD bH gameProfile Lcom/mojang/authlib/GameProfile;
+	FIELD b sleepTimer I
+	FIELD bi inventory Lnone/wn;
+	FIELD bj inventoryContainer Lnone/xj;
+	FIELD bk openContainer Lnone/xj;
+	FIELD bl foodStats Lnone/xh;
+	FIELD bm flyToggleTimer I
+	FIELD bn prevCameraYaw F
+	FIELD bo cameraYaw F
+	FIELD bp xpCooldown I
+	FIELD bw sleeping Z
+	FIELD bx playerLocation Lnone/ck;
+	FIELD c spawnChunk Lnone/ck;
+	FIELD d spawnForced Z
+	FIELD e startMinecartRidingCoordinate Lnone/ck;
+	FIELD g itemInUse Lnone/zy;
+	FIELD h itemInUseCount I
+	METHOD <init> (Lnone/adn;Lcom/mojang/authlib/GameProfile;)V
+		ARG 0 world
+		ARG 1 profile
 	METHOD I preparePlayerToSpawn ()V
 	METHOD J setDead ()V
 	METHOD L getMaxInPortalTime ()I
@@ -654,6 +709,9 @@ CLASS none/xb
 	METHOD t_ onUpdate ()V
 CLASS none/xe
 	METHOD h entityInit ()V
+CLASS none/xh net/minecraft/util/FoodStats
+CLASS none/xj net/minecraft/inventory/Container
+CLASS none/ye net/minecraft/inventory/InventoryEnderChest
 CLASS none/za net/minecraft/creativetab/CreativeTabs
 CLASS none/zx net/minecraft/item/Item
 CLASS none/zy net/minecraft/item/ItemStack
