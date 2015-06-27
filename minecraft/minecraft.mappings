@@ -1,4 +1,5 @@
 CLASS none/b net/minecraft/crash/CrashReport
+CLASS none/f net/minecraft/util/ReportedException
 CLASS none/n net/minecraft/command/ICommandSender
 CLASS none/o net/minecraft/command/CommandResultStats
 CLASS none/ck net/minecraft/util/BlockPos
@@ -11,17 +12,50 @@ CLASS none/cr net/minecraft/util/EnumFacing
 	FIELD e WEST Lnone/cr;
 	FIELD f EAST Lnone/cr;
 CLASS none/cu net/minecraft/util/ObjectIntIdentityMap
+CLASS none/dm
+	METHOD b copy ()Lnone/ec;
+CLASS none/dn
+	METHOD b copy ()Lnone/ec;
 CLASS none/dp net/minecraft/nbt/NBTTagCompound
+	METHOD a setByte (Ljava/lang/String;B)V
 	METHOD a setFloat (Ljava/lang/String;F)V
 	METHOD a setTag (Ljava/lang/String;Lnone/ec;)V
 	METHOD a setBoolean (Ljava/lang/String;Z)V
+	METHOD b copy ()Lnone/ec;
 	METHOD b hasKey (Ljava/lang/String;I)Z
+	METHOD d getByte (Ljava/lang/String;)B
 	METHOD h getFloat (Ljava/lang/String;)F
 	METHOD m getCompoundTag (Ljava/lang/String;)Lnone/dp;
 	METHOD n getBoolean (Ljava/lang/String;)Z
+CLASS none/dq
+	METHOD b copy ()Lnone/ec;
+CLASS none/dr
+	METHOD b copy ()Lnone/ec;
+CLASS none/ds
+	METHOD b copy ()Lnone/ec;
+CLASS none/dt
+	METHOD b copy ()Lnone/ec;
+CLASS none/du
+	METHOD b copy ()Lnone/ec;
+CLASS none/dv net/minecraft/nbt/NBTTagList
+	METHOD a appendTag (Lnone/ec;)V
+	METHOD b copy ()Lnone/ec;
+	METHOD b getCompoundTagAt (I)Lnone/dp;
+	METHOD c tagCount ()I
+CLASS none/dw
+	METHOD b copy ()Lnone/ec;
+CLASS none/ea
+	METHOD b copy ()Lnone/ec;
+CLASS none/eb
+	METHOD b copy ()Lnone/ec;
+CLASS none/ec
+	METHOD b copy ()Lnone/ec;
 CLASS none/el net/minecraft/network/NetworkManager
 CLASS none/en net/minecraft/network/PacketBuffer
 	METHOD readUnsignedByte readUnsignedByte ()S
+CLASS none/ev net/minecraft/util/IChatComponent
+CLASS none/fb net/minecraft/util/ChatComponentText
+CLASS none/fc net/minecraft/util/ChatComponentTranslation
 CLASS none/fg net/minecraft/network/Packet
 	METHOD a readPacketData (Lnone/en;)V
 		ARG 0 data
@@ -397,6 +431,38 @@ CLASS none/nx net/minecraft/util/IStringSerializable
 CLASS none/oe net/minecraft/util/IThreadListener
 	METHOD a addScheduledTask (Ljava/lang/Runnable;)Lcom/google/common/util/concurrent/ListenableFuture;
 	METHOD aI isCallingFromMinecraftThread ()Z
+CLASS none/oh net/minecraft/inventory/IInventory
+	METHOD a getStackInSlot (I)Lnone/zy;
+	METHOD a decrStackSize (II)Lnone/zy;
+	METHOD a setInventorySlotContents (ILnone/zy;)V
+	METHOD a isUseableByPlayer (Lnone/wo;)Z
+	METHOD a_ getField (I)I
+	METHOD b getStackInSlotOnClosing (I)Lnone/zy;
+	METHOD b setField (II)V
+	METHOD b isItemValidForSlot (ILnone/zy;)Z
+	METHOD b openInventory (Lnone/wo;)V
+	METHOD c closeInventory (Lnone/wo;)V
+	METHOD g getFieldCount ()I
+	METHOD l clearInventory ()V
+	METHOD o_ getSizeInventory ()I
+	METHOD p_ markDirty ()V
+	METHOD q_ getInventoryStackLimit ()I
+CLASS none/or
+	METHOD a getStackInSlot (I)Lnone/zy;
+	METHOD a decrStackSize (II)Lnone/zy;
+	METHOD a setInventorySlotContents (ILnone/zy;)V
+	METHOD a isUseableByPlayer (Lnone/wo;)Z
+	METHOD a_ getField (I)I
+	METHOD b getStackInSlotOnClosing (I)Lnone/zy;
+	METHOD b setField (II)V
+	METHOD b isItemValidForSlot (ILnone/zy;)Z
+	METHOD b openInventory (Lnone/wo;)V
+	METHOD c closeInventory (Lnone/wo;)V
+	METHOD g getFieldCount ()I
+	METHOD l clearInventory ()V
+	METHOD o_ getSizeInventory ()I
+	METHOD p_ markDirty ()V
+	METHOD q_ getInventoryStackLimit ()I
 CLASS none/os net/minecraft/profiler/PlayerUsageSnooper
 CLASS none/ot net/minecraft/profiler/IPlayerUsage
 	METHOD ac isSnooperEnabled ()Z
@@ -488,6 +554,7 @@ CLASS none/pl net/minecraft/entity/Entity
 		ARG 0 player
 	METHOD g getFlag (I)Z
 	METHOD h entityInit ()V
+	METHOD h getDistanceSqToEntity (Lnone/pl;)D
 	METHOD i setVelocity (DDD)V
 		ARG 0 x
 		ARG 1 y
@@ -649,6 +716,90 @@ CLASS none/wm net/minecraft/entity/player/PlayerCapabilities
 	METHOD b readCapabilitiesFromNBT (Lnone/dp;)V
 		ARG 0 nbt
 CLASS none/wn net/minecraft/entity/player/InventoryPlayer
+	FIELD a mainInventory [Lnone/zy;
+	FIELD b armorInventory [Lnone/zy;
+	FIELD c currentItem I
+	FIELD d player Lnone/wo;
+	FIELD e inventoryChanged Z
+	FIELD f itemStack Lnone/zy;
+	METHOD <init> (Lnone/wo;)V
+		ARG 0 player
+	METHOD a damageArmor (F)V
+		ARG 0 damage
+	METHOD a getStackInSlot (I)Lnone/zy;
+		ARG 0 slot
+	METHOD a decrStackSize (II)Lnone/zy;
+		ARG 0 index
+		ARG 1 count
+	METHOD a setInventorySlotContents (ILnone/zy;)V
+		ARG 0 index
+		ARG 1 stack
+	METHOD a getStrVsBlock (Lnone/afi;)F
+		ARG 0 block
+	METHOD a writeToNBT (Lnone/dv;)Lnone/dv;
+		ARG 0 nbt
+	METHOD a isUseableByPlayer (Lnone/wo;)Z
+		ARG 0 player
+	METHOD a consumeInventoryItem (Lnone/zx;)Z
+		ARG 0 item
+	METHOD a getInventorySlotContainItemAndDamage (Lnone/zx;I)I
+		ARG 0 item
+		ARG 1 damage
+	METHOD a setCurrentItem (Lnone/zx;IZZ)V
+		ARG 0 item
+	METHOD a addItemStackToInventory (Lnone/zy;)Z
+		ARG 0 stack
+	METHOD a_ getField (I)I
+		ARG 0 id
+	METHOD b getStackInSlotOnClosing (I)Lnone/zy;
+		ARG 0 index
+	METHOD b setField (II)V
+		ARG 0 id
+		ARG 1 value
+	METHOD b isItemValidForSlot (ILnone/zy;)Z
+		ARG 0 index
+		ARG 1 stack
+	METHOD b canHarvestBlock (Lnone/afi;)Z
+		ARG 0 block
+	METHOD b readFromNBT (Lnone/dv;)V
+		ARG 0 nbt
+	METHOD b copyInventory (Lnone/wn;)V
+		ARG 0 otherInventory
+	METHOD b openInventory (Lnone/wo;)V
+		ARG 0 player
+	METHOD b hasItem (Lnone/zx;)Z
+		ARG 0 item
+	METHOD b setItemStack (Lnone/zy;)V
+		ARG 0 stack
+	METHOD c closeInventory (Lnone/wo;)V
+		ARG 0 player
+	METHOD c getInventorySlotContainItem (Lnone/zx;)I
+		ARG 0 item
+	METHOD c hasItemStack (Lnone/zy;)Z
+		ARG 0 stack
+	METHOD d changeCurrentItem (I)V
+		ARG 0 change
+	METHOD d storeItemStack (Lnone/zy;)I
+		ARG 0 stack
+	METHOD e armorItemInSlot (I)Lnone/zy;
+		ARG 0 slot
+	METHOD e storePartialItemStack (Lnone/zy;)I
+		ARG 0 stack
+	METHOD e_ getName ()Ljava/lang/String;
+	METHOD f_ getDisplayName ()Lnone/ev;
+	METHOD g getFieldCount ()I
+	METHOD h getCurrentItem ()Lnone/zy;
+	METHOD i getHotbarSize ()I
+	METHOD j getFirstEmptyStack ()I
+	METHOD k decrementAnimations ()V
+	METHOD l clearInventory ()V
+	METHOD l_ hasCustomName ()Z
+	METHOD m getTotalArmorValue ()I
+	METHOD n dropAllItems ()V
+	METHOD o_ getSizeInventory ()I
+	METHOD p getItemStack ()Lnone/zy;
+	METHOD p_ markDirty ()V
+	METHOD q_ getInventoryStackLimit ()I
 CLASS none/wo net/minecraft/entity/player/EntityPlayer
 	FIELD a theInventoryEnderChest Lnone/ye;
 	FIELD bA capabilities Lnone/wm;
@@ -711,10 +862,93 @@ CLASS none/xe
 	METHOD h entityInit ()V
 CLASS none/xh net/minecraft/util/FoodStats
 CLASS none/xj net/minecraft/inventory/Container
+CLASS none/xl
+	CLASS none/xl$1
+		METHOD p_ markDirty ()V
+CLASS none/xq
+	METHOD a getStackInSlot (I)Lnone/zy;
+	METHOD a decrStackSize (II)Lnone/zy;
+	METHOD a setInventorySlotContents (ILnone/zy;)V
+	METHOD a isUseableByPlayer (Lnone/wo;)Z
+	METHOD a_ getField (I)I
+	METHOD b getStackInSlotOnClosing (I)Lnone/zy;
+	METHOD b setField (II)V
+	METHOD b isItemValidForSlot (ILnone/zy;)Z
+	METHOD b openInventory (Lnone/wo;)V
+	METHOD c closeInventory (Lnone/wo;)V
+	METHOD g getFieldCount ()I
+	METHOD l clearInventory ()V
+	METHOD o_ getSizeInventory ()I
+	METHOD p_ markDirty ()V
+	METHOD q_ getInventoryStackLimit ()I
+CLASS none/xt
+	CLASS none/xt$1
+		METHOD p_ markDirty ()V
+		METHOD q_ getInventoryStackLimit ()I
+CLASS none/yb
+	METHOD a getStackInSlot (I)Lnone/zy;
+	METHOD a decrStackSize (II)Lnone/zy;
+	METHOD a setInventorySlotContents (ILnone/zy;)V
+	METHOD a isUseableByPlayer (Lnone/wo;)Z
+	METHOD a_ getField (I)I
+	METHOD b getStackInSlotOnClosing (I)Lnone/zy;
+	METHOD b setField (II)V
+	METHOD b isItemValidForSlot (ILnone/zy;)Z
+	METHOD b openInventory (Lnone/wo;)V
+	METHOD c closeInventory (Lnone/wo;)V
+	METHOD g getFieldCount ()I
+	METHOD l clearInventory ()V
+	METHOD o_ getSizeInventory ()I
+	METHOD p_ markDirty ()V
+	METHOD q_ getInventoryStackLimit ()I
 CLASS none/ye net/minecraft/inventory/InventoryEnderChest
+	METHOD a isUseableByPlayer (Lnone/wo;)Z
+	METHOD b openInventory (Lnone/wo;)V
+	METHOD c closeInventory (Lnone/wo;)V
+CLASS none/yf
+	METHOD a getStackInSlot (I)Lnone/zy;
+	METHOD a decrStackSize (II)Lnone/zy;
+	METHOD a setInventorySlotContents (ILnone/zy;)V
+	METHOD a isUseableByPlayer (Lnone/wo;)Z
+	METHOD a_ getField (I)I
+	METHOD b getStackInSlotOnClosing (I)Lnone/zy;
+	METHOD b setField (II)V
+	METHOD b isItemValidForSlot (ILnone/zy;)Z
+	METHOD b openInventory (Lnone/wo;)V
+	METHOD c closeInventory (Lnone/wo;)V
+	METHOD g getFieldCount ()I
+	METHOD l clearInventory ()V
+	METHOD o_ getSizeInventory ()I
+	METHOD p_ markDirty ()V
+	METHOD q_ getInventoryStackLimit ()I
+CLASS none/yk net/minecraft/item/ItemArmor
+	FIELD c damageReduceAmount I
 CLASS none/za net/minecraft/creativetab/CreativeTabs
 CLASS none/zx net/minecraft/item/Item
 CLASS none/zy net/minecraft/item/ItemStack
+	FIELD b stackSize I
+	FIELD c animationsToGo I
+	METHOD a splitStack (I)Lnone/zy;
+	METHOD a damageItem (ILnone/ps;)V
+	METHOD a updateAnimation (Lnone/adn;Lnone/pl;IZ)V
+	METHOD a getStrVsBlock (Lnone/afi;)F
+	METHOD a loadItemStackFromNBT (Lnone/dp;)Lnone/zy;
+	METHOD a isItemEqual (Lnone/zy;)Z
+	METHOD a areItemStackTagsEqual (Lnone/zy;Lnone/zy;)Z
+	METHOD b getItem ()Lnone/zx;
+	METHOD b canHarvestBlock (Lnone/afi;)Z
+	METHOD b writeToNBT (Lnone/dp;)Lnone/dp;
+	METHOD b copyItemStack (Lnone/zy;)Lnone/zy;
+	METHOD c getMaxStackSize ()I
+	METHOD d isStackable ()Z
+	METHOD d setTagCompound (Lnone/dp;)V
+	METHOD f getHasSubtypes ()Z
+	METHOD g isItemDamaged ()Z
+	METHOD h getItemDamage ()I
+	METHOD i getMetadata ()I
+	METHOD n hasTagCompound ()Z
+	METHOD o getTagCompound ()Lnone/dp;
+	METHOD v isItemEnchantable ()Z
 CLASS none/adn net/minecraft/world/World
 	FIELD B theProfiler Lnone/nu;
 	FIELD D isRemote Z
@@ -1092,6 +1326,51 @@ CLASS none/akt
 	METHOD a getStateFromMeta (I)Lnone/ama;
 	METHOD c getMetaFromState (Lnone/ama;)I
 	METHOD g getMapColor (Lnone/ama;)Lnone/aro;
+CLASS none/akw
+	METHOD a getStackInSlot (I)Lnone/zy;
+	METHOD a decrStackSize (II)Lnone/zy;
+	METHOD a setInventorySlotContents (ILnone/zy;)V
+	METHOD a isUseableByPlayer (Lnone/wo;)Z
+	METHOD a_ getField (I)I
+	METHOD b getStackInSlotOnClosing (I)Lnone/zy;
+	METHOD b setField (II)V
+	METHOD b isItemValidForSlot (ILnone/zy;)Z
+	METHOD b openInventory (Lnone/wo;)V
+	METHOD c closeInventory (Lnone/wo;)V
+	METHOD g getFieldCount ()I
+	METHOD l clearInventory ()V
+	METHOD o_ getSizeInventory ()I
+	METHOD q_ getInventoryStackLimit ()I
+CLASS none/akz
+	METHOD a getStackInSlot (I)Lnone/zy;
+	METHOD a decrStackSize (II)Lnone/zy;
+	METHOD a setInventorySlotContents (ILnone/zy;)V
+	METHOD a isUseableByPlayer (Lnone/wo;)Z
+	METHOD a_ getField (I)I
+	METHOD b getStackInSlotOnClosing (I)Lnone/zy;
+	METHOD b setField (II)V
+	METHOD b isItemValidForSlot (ILnone/zy;)Z
+	METHOD b openInventory (Lnone/wo;)V
+	METHOD c closeInventory (Lnone/wo;)V
+	METHOD g getFieldCount ()I
+	METHOD l clearInventory ()V
+	METHOD o_ getSizeInventory ()I
+	METHOD q_ getInventoryStackLimit ()I
+CLASS none/ald
+	METHOD a getStackInSlot (I)Lnone/zy;
+	METHOD a decrStackSize (II)Lnone/zy;
+	METHOD a setInventorySlotContents (ILnone/zy;)V
+	METHOD a isUseableByPlayer (Lnone/wo;)Z
+	METHOD a_ getField (I)I
+	METHOD b getStackInSlotOnClosing (I)Lnone/zy;
+	METHOD b setField (II)V
+	METHOD b isItemValidForSlot (ILnone/zy;)Z
+	METHOD b openInventory (Lnone/wo;)V
+	METHOD c closeInventory (Lnone/wo;)V
+	METHOD g getFieldCount ()I
+	METHOD l clearInventory ()V
+	METHOD o_ getSizeInventory ()I
+	METHOD q_ getInventoryStackLimit ()I
 CLASS none/alt
 	METHOD a getStateFromMeta (I)Lnone/ama;
 	METHOD c getMetaFromState (Lnone/ama;)I
@@ -1900,6 +2179,10 @@ CLASS none/bex net/minecraft/client/entity/EntityPlayerSP
 	METHOD t_ onUpdate ()V
 CLASS none/bey
 	METHOD t_ onUpdate ()V
+CLASS none/bfa
+	METHOD a_ getField (I)I
+	METHOD b setField (II)V
+	METHOD g getFieldCount ()I
 CLASS none/bfl net/minecraft/client/renderer/EntityRenderer
 CLASS none/bfm net/minecraft/client/renderer/GlStateManager
 	METHOD C disableRescaleNormal ()V
