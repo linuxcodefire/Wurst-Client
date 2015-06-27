@@ -1,1 +1,10 @@
+CLASS none/is net/minecraft/network/play/client/C07PacketPlayerDigging
+	CLASS none/is$a Action
+		FIELD a START_DESTROY_BLOCK Lnone/is$a;
+		FIELD b ABORT_DESTROY_BLOCK Lnone/is$a;
+		FIELD c STOP_DESTROY_BLOCK Lnone/is$a;
+		FIELD d DROP_ALL_ITEMS Lnone/is$a;
+		FIELD e DROP_ITEM Lnone/is$a;
+		FIELD f RELEASE_USE_ITEM Lnone/is$a;
 CLASS none/avf net/minecraft/client/Minecraft
+CLASS none/beu net/minecraft/client/entity/AbstractClientPlayer
