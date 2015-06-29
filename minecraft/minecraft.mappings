@@ -61,9 +61,18 @@ CLASS none/fg net/minecraft/network/Packet
 		ARG 0 data
 	METHOD b writePacketData (Lnone/en;)V
 		ARG 0 data
-CLASS none/fj
+CLASS none/fi net/minecraft/network/PacketThreadUtil
+CLASS none/fj net/minecraft/network/play/server/S08PacketPlayerPosLook
+	CLASS none/fj$a EnumFlags
+		FIELD a X Lnone/fj$a;
+		FIELD b Y Lnone/fj$a;
+		FIELD c Z Lnone/fj$a;
+		FIELD d Y_ROT Lnone/fj$a;
+		FIELD e X_ROT Lnone/fj$a;
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
+CLASS none/fk net/minecraft/network/play/INetHandlerPlayClient
+	METHOD a handleJoinGame (Lnone/gu;)V
 CLASS none/fl net/minecraft/network/play/server/S0EPacketSpawnObject
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
@@ -73,16 +82,16 @@ CLASS none/fm net/minecraft/network/play/server/S11PacketSpawnExperienceOrb
 CLASS none/fn net/minecraft/network/play/server/S2CPacketSpawnGlobalEntity
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/fo
+CLASS none/fo net/minecraft/network/play/server/S0FPacketSpawnMob
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/fp
+CLASS none/fp net/minecraft/network/play/server/S10PacketSpawnPainting
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/fq
+CLASS none/fq net/minecraft/network/play/server/S0CPacketSpawnPlayer
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/fr
+CLASS none/fr net/minecraft/network/play/server/S0BPacketAnimation
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/fs
@@ -97,7 +106,7 @@ CLASS none/fu
 CLASS none/fv
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/fw
+CLASS none/fw net/minecraft/network/play/server/S23PacketBlockChange
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/fx
@@ -106,10 +115,10 @@ CLASS none/fx
 CLASS none/fy
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/fz
+CLASS none/fz net/minecraft/network/play/server/S02PacketChat
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/ga
+CLASS none/ga net/minecraft/network/play/server/S22PacketMultiBlockChange
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/gb
@@ -118,7 +127,7 @@ CLASS none/gb
 CLASS none/gc
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/gd
+CLASS none/gd net/minecraft/network/play/server/S2DPacketOpenWindow
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/ge
@@ -127,22 +136,22 @@ CLASS none/ge
 CLASS none/gf
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/gg
+CLASS none/gg net/minecraft/network/play/server/S2FPacketSetSlot
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/gh
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/gi
+CLASS none/gi net/minecraft/network/play/server/S40PacketDisconnect
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/gj
+CLASS none/gj net/minecraft/network/play/server/S19PacketEntityStatus
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/gk
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/gl
+CLASS none/gl net/minecraft/network/play/server/S27PacketExplosion
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/gm
@@ -154,7 +163,7 @@ CLASS none/gn
 CLASS none/go
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/gp
+CLASS none/gp net/minecraft/network/play/server/S21PacketChunkData
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/gq
@@ -169,7 +178,7 @@ CLASS none/gs
 CLASS none/gt
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/gu
+CLASS none/gu net/minecraft/network/play/server/S01PacketJoinGame
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/gv
@@ -199,10 +208,10 @@ CLASS none/gz
 CLASS none/ha
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hb
+CLASS none/hb net/minecraft/network/play/server/S0APacketUseBed
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hc
+CLASS none/hc net/minecraft/network/play/server/S13PacketDestroyEntities
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/hd
@@ -211,10 +220,10 @@ CLASS none/hd
 CLASS none/he
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hf
+CLASS none/hf net/minecraft/network/play/server/S07PacketRespawn
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hg
+CLASS none/hg net/minecraft/network/play/server/S19PacketEntityHeadLook
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/hh
@@ -223,28 +232,28 @@ CLASS none/hh
 CLASS none/hi
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hj
+CLASS none/hj net/minecraft/network/play/server/S09PacketHeldItemChange
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/hk
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hl
+CLASS none/hl net/minecraft/network/play/server/S1CPacketEntityMetadata
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hm
+CLASS none/hm net/minecraft/network/play/server/S1BPacketEntityAttach
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hn
+CLASS none/hn net/minecraft/network/play/server/S12PacketEntityVelocity
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/ho
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hp
+CLASS none/hp net/minecraft/network/play/server/S1FPacketSetExperience
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hq
+CLASS none/hq net/minecraft/network/play/server/S06PacketUpdateHealth
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/hr
@@ -256,10 +265,10 @@ CLASS none/hs
 CLASS none/ht
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hu
+CLASS none/hu net/minecraft/network/play/server/S05PacketSpawnPosition
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hv
+CLASS none/hv net/minecraft/network/play/server/S03PacketTimeUpdate
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/hw
@@ -271,10 +280,10 @@ CLASS none/hx
 CLASS none/hy
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/hz
+CLASS none/hz net/minecraft/network/play/server/S0DPacketCollectItem
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/ia
+CLASS none/ia net/minecraft/network/play/server/S18PacketEntityTeleport
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/ib
@@ -639,6 +648,7 @@ CLASS none/up
 	METHOD h entityInit ()V
 CLASS none/uq
 	METHOD h entityInit ()V
+CLASS none/ur net/minecraft/entity/item/EntityPainting
 CLASS none/us net/minecraft/entity/projectile/EntityFishHook
 	METHOD J setDead ()V
 	METHOD h entityInit ()V
@@ -2254,6 +2264,9 @@ CLASS none/bcz net/minecraft/client/network/NetHandlerPlayClient
 	CLASS none/bcz$3
 		CLASS none/bcz$3$1
 			METHOD a confirmClicked (ZI)V
+	METHOD a addToSendQueue (Lnone/fg;)V
+	METHOD a handleJoinGame (Lnone/gu;)V
+	METHOD b cleanup ()V
 CLASS none/bdb net/minecraft/client/multiplayer/PlayerControllerMP
 CLASS none/bdc net/minecraft/client/multiplayer/WorldClient
 CLASS none/bdf net/minecraft/client/multiplayer/ServerData
@@ -2324,7 +2337,7 @@ CLASS none/bex net/minecraft/client/entity/EntityPlayerSP
 	METHOD av isSneaking ()Z
 	METHOD d setSprinting (Z)V
 	METHOD t_ onUpdate ()V
-CLASS none/bey
+CLASS none/bey net/minecraft/client/entity/EntityOtherPlayerMP
 	METHOD t_ onUpdate ()V
 CLASS none/bfa
 	METHOD a_ getField (I)I
