@@ -285,38 +285,38 @@ CLASS none/ic
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/id net/minecraft/network/play/INetHandlerPlayServer
 	METHOD a processPlayer (Lnone/iq;)V
-CLASS none/ie
+CLASS none/ie net/minecraft/network/play/client/C14PacketTabComplete
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/ig net/minecraft/network/play/client/C01PacketChatMessage
 	FIELD a message Ljava/lang/String;
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/ih
+CLASS none/ih net/minecraft/network/play/client/C16PacketClientStatus
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/ii
+CLASS none/ii net/minecraft/network/play/client/C15PacketClientSettings
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/ij
+CLASS none/ij net/minecraft/network/play/client/C0FPacketConfirmTransaction
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/ik
+CLASS none/ik net/minecraft/network/play/client/C11PacketEnchantItem
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/il
+CLASS none/il net/minecraft/network/play/client/C0EPacketClickWindow
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/im
+CLASS none/im net/minecraft/network/play/client/C0DPacketCloseWindow
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/in
+CLASS none/in net/minecraft/network/play/client/C17PacketCustomPayload
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/io
+CLASS none/io net/minecraft/network/play/client/C02PacketUseEntity
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/ip
+CLASS none/ip net/minecraft/network/play/client/C00PacketKeepAlive
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/iq net/minecraft/network/play/client/C03PacketPlayer
@@ -343,7 +343,7 @@ CLASS none/iq net/minecraft/network/play/client/C03PacketPlayer
 	METHOD a processPacket (Lnone/id;)V
 		ARG 0 handler
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/ir
+CLASS none/ir net/minecraft/network/play/client/C13PacketPlayerAbilities
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/is net/minecraft/network/play/client/C07PacketPlayerDigging
@@ -356,31 +356,50 @@ CLASS none/is net/minecraft/network/play/client/C07PacketPlayerDigging
 		FIELD f RELEASE_USE_ITEM Lnone/is$a;
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/it
+CLASS none/it net/minecraft/network/play/client/C0BPacketEntityAction
+	CLASS none/it$a Action
+		FIELD a START_SNEAKING Lnone/it$a;
+		FIELD b STOP_SNEAKING Lnone/it$a;
+		FIELD c STOP_SLEEPING Lnone/it$a;
+		FIELD d START_SPRINTING Lnone/it$a;
+		FIELD e STOP_SPRINTING Lnone/it$a;
+		FIELD f RIDING_JUMP Lnone/it$a;
+		FIELD g OPEN_INVENTORY Lnone/it$a;
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/iu
+CLASS none/iu net/minecraft/network/play/client/C0CPacketInput
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/iv
+CLASS none/iv net/minecraft/network/play/client/C19PacketResourcePackStatus
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/iw
+CLASS none/iw net/minecraft/network/play/client/C09PacketHeldItemChange
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/ix
+CLASS none/ix net/minecraft/network/play/client/C10PacketCreativeInventoryAction
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/iy
+CLASS none/iy net/minecraft/network/play/client/C12PacketUpdateSign
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/iz
+CLASS none/iz net/minecraft/network/play/client/C0APacketAnimation
+	METHOD a readPacketData (Lnone/en;)V
+		ARG 0 buffer
+	METHOD a (Lnone/id;)V
+		ARG 0 handler
+	METHOD b writePacketData (Lnone/en;)V
+		ARG 0 buffer
+CLASS none/ja net/minecraft/network/play/client/C18PacketSpectate
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
-CLASS none/ja
-	METHOD a readPacketData (Lnone/en;)V
-	METHOD b writePacketData (Lnone/en;)V
-CLASS none/jb
+CLASS none/jb net/minecraft/network/play/client/C08PacketPlayerBlockPlacement
+	FIELD c placedBlockDirection I
+	FIELD d stack Lnone/zy;
+	FIELD e facingX F
+	FIELD f facingY F
+	FIELD g facingZ F
+	METHOD <init> (Lnone/zy;)V
+		ARG 0 stack
 	METHOD a readPacketData (Lnone/en;)V
 	METHOD b writePacketData (Lnone/en;)V
 CLASS none/jd
