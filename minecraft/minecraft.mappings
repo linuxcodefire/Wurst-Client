@@ -1501,6 +1501,20 @@ CLASS none/arp net/minecraft/block/material/MaterialPortal/MaterialPortal
 CLASS none/ats net/minecraft/world/storage/ISaveFormat
 CLASS none/auh net/minecraft/util/AxisAlignedBB
 CLASS none/aui net/minecraft/util/MovingObjectPosition
+	CLASS none/aui$a MovingObjectType
+		FIELD a MISS Lnone/aui$a;
+		FIELD b BLOCK Lnone/aui$a;
+		FIELD c ENTITY Lnone/aui$a;
+	FIELD a typeOfHit Lnone/aui$a;
+	FIELD b sideHit Lnone/cr;
+	FIELD c hitVec Lnone/auj;
+	FIELD d entityHit Lnone/pl;
+	FIELD e blockPos Lnone/ck;
+	METHOD a getBlockPos ()Lnone/ck;
+CLASS none/auj net/minecraft/util/Vec3
+	FIELD a xCoord D
+	FIELD b yCoord D
+	FIELD c zCoord D
 CLASS none/avd net/minecraft/client/renderer/RenderHelper
 	METHOD a disableStandardItemLighting ()V
 CLASS none/avf net/minecraft/client/Minecraft
