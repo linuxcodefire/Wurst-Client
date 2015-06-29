@@ -2210,7 +2210,8 @@ CLASS none/azf
 	METHOD b initGui ()V
 	METHOD e updateScreen ()V
 	METHOD m onGuiClosed ()V
-CLASS none/azi
+CLASS none/azi net/minecraft/client/gui/GuiMultiplayer
+	FIELD z selectedServer Lnone/bdf;
 	METHOD a keyTyped (CI)V
 	METHOD a drawScreen (IIF)V
 	METHOD a mouseClicked (III)V
@@ -2221,6 +2222,7 @@ CLASS none/azi
 	METHOD e updateScreen ()V
 	METHOD k handleMouseInput ()V
 	METHOD m onGuiClosed ()V
+CLASS none/azm net/minecraft/client/gui/ServerSelectionList
 CLASS none/azp
 	METHOD a drawScreen (IIF)V
 	METHOD a mouseClicked (III)V
@@ -2255,6 +2257,8 @@ CLASS none/bcz net/minecraft/client/network/NetHandlerPlayClient
 CLASS none/bdb net/minecraft/client/multiplayer/PlayerControllerMP
 CLASS none/bdc net/minecraft/client/multiplayer/WorldClient
 CLASS none/bdf net/minecraft/client/multiplayer/ServerData
+CLASS none/bdg net/minecraft/client/multiplayer/ServerList
+CLASS none/bdh net/minecraft/client/network/OldServerPinger
 CLASS none/bdm
 	METHOD t_ onUpdate ()V
 CLASS none/bdn
@@ -2364,6 +2368,9 @@ CLASS none/bpg net/minecraft/client/audio/PositionedSoundRecord
 	METHOD a createPositionedSoundRecord (Lnone/jz;F)Lnone/bpg;
 CLASS none/bpp net/minecraft/server/integrated/IntegratedServer
 	METHOD ac isSnooperEnabled ()Z
+CLASS none/bpr net/minecraft/client/network/LanServerDetector
+	CLASS none/bpr$b ThreadLanServerFind
+	CLASS none/bpr$c LanServerList
 CLASS none/bpw net/minecraft/client/audio/MusicTicker
 	CLASS none/bpw$a MusicType
 CLASS none/bqa net/minecraft/client/audio/SoundHandler
