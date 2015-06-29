@@ -1792,6 +1792,23 @@ CLASS none/avt net/minecraft/client/gui/GuiButton
 		ARG 0 mc
 		ARG 1 mouseX
 		ARG 2 mouseY
+CLASS none/avx net/minecraft/client/gui/GuiTextField
+	FIELD a xPosition I
+	FIELD f yPosition I
+	FIELD h fontRendererInstance Lnone/avo;
+	FIELD k text Ljava/lang/String;
+	FIELD l maxStringLength I
+	FIELD m cursorCounter I
+	FIELD n enableBackgroundDrawing Z
+	FIELD o canLoseFocus Z
+	FIELD p isFocused Z
+	FIELD q isEnabled Z
+	METHOD a (Lcom/google/common/base/Predicate;)V
+	METHOD a setText (Ljava/lang/String;)V
+		ARG 0 text
+	METHOD b getText ()Ljava/lang/String;
+	METHOD c getSelectedText ()Ljava/lang/String;
+	METHOD f setCursorPositionEnd ()V
 CLASS none/avy
 	METHOD a mouseReleased (II)V
 	METHOD a getHoverState (Z)I
