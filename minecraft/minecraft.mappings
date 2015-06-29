@@ -1696,10 +1696,114 @@ CLASS none/avj net/minecraft/client/LoadingScreenRenderer
 CLASS none/avm net/minecraft/util/Timer
 CLASS none/avn net/minecraft/util/Session
 CLASS none/avo net/minecraft/client/gui/FontRenderer
+	FIELD a FONT_HEIGHT I
+	FIELD b fontRandom Ljava/util/Random;
+	FIELD c unicodePageLocations [Lnone/jz;
+	FIELD d charWidth [I
+	FIELD e glyphWidth [B
+	FIELD f colorCode [I
+	FIELD g locationFontTexture Lnone/jz;
+	FIELD h renderEngine Lnone/bmk;
+	FIELD i posX F
+	FIELD j posY F
+	FIELD k unicodeFlag Z
+	FIELD l bidiFlag Z
+	FIELD m red F
+	FIELD n blue F
+	FIELD o green F
+	FIELD p alpha F
+	FIELD q textColor I
+	FIELD r randomStyle Z
+	FIELD s boldStyle Z
+	FIELD t italicStyle Z
+	FIELD u underlineStyle Z
+	FIELD v strikethroughStyle Z
+	METHOD a renderCharAtPos (CZ)F
+	METHOD a getUnicodePageLocation (I)Lnone/jz;
+	METHOD a renderDefaultChar (IZ)F
+	METHOD a drawStringWithShadow (Ljava/lang/String;FFI)I
+	METHOD a drawString (Ljava/lang/String;FFIZ)I
+	METHOD a drawString (Ljava/lang/String;III)I
+	METHOD a onResourceManagerReload (Lnone/bnj;)V
+	METHOD b renderUnicodeChar (CZ)F
+	METHOD b loadGlyphTexture (I)V
+	METHOD c readFontTexture ()V
+	METHOD c bidiReorder (Ljava/lang/String;)Ljava/lang/String;
+	METHOD d readGlyphSizes ()V
 CLASS none/avp net/minecraft/client/gui/GuiIngame
 CLASS none/avq net/minecraft/client/gui/Gui
 	METHOD a drawGradientRect (IIIIII)V
 CLASS none/avt net/minecraft/client/gui/GuiButton
+	FIELD a buttonTextures Lnone/jz;
+	FIELD f width I
+	FIELD g height I
+	FIELD h xPosition I
+	FIELD i yPosition I
+	FIELD j displayString Ljava/lang/String;
+	FIELD k id I
+	FIELD l enabled Z
+	FIELD m visible Z
+	FIELD n hovered Z
+	METHOD <init> (IIIIILjava/lang/String;)V
+		ARG 0 id
+		ARG 1 x
+		ARG 2 y
+		ARG 3 width
+		ARG 4 height
+		ARG 5 text
+	METHOD <init> (IIILjava/lang/String;)V
+		ARG 0 id
+		ARG 1 x
+		ARG 2 y
+		ARG 3 text
+	METHOD a isMouseOver ()Z
+	METHOD a setButtonWidth (I)V
+		ARG 0 width
+	METHOD a mouseReleased (II)V
+		ARG 0 mouseX
+		ARG 1 mouseY
+	METHOD a drawButton (Lnone/avf;II)V
+		ARG 0 mc
+		ARG 1 mouseX
+		ARG 2 mouseY
+	METHOD a playPressSound (Lnone/bqa;)V
+		ARG 0 soundHandler
+	METHOD a getHoverState (Z)I
+		ARG 0 mouseOver
+	METHOD b getButtonWidth ()I
+	METHOD b drawButtonForegroundLayer (II)V
+		ARG 0 mouseX
+		ARG 1 mouseY
+	METHOD b mouseDragged (Lnone/avf;II)V
+		ARG 0 mc
+		ARG 1 mouseX
+		ARG 2 mouseY
+	METHOD c mousePressed (Lnone/avf;II)Z
+		ARG 0 mc
+		ARG 1 mouseX
+		ARG 2 mouseY
+CLASS none/avy
+	METHOD a mouseReleased (II)V
+	METHOD a getHoverState (Z)I
+	METHOD b mouseDragged (Lnone/avf;II)V
+	METHOD c mousePressed (Lnone/avf;II)Z
+CLASS none/awa
+	METHOD a drawButton (Lnone/avf;II)V
+CLASS none/awc
+	METHOD c mousePressed (Lnone/avf;II)Z
+CLASS none/awd
+	METHOD a drawButton (Lnone/avf;II)V
+CLASS none/awk
+	METHOD a mouseReleased (II)V
+	METHOD a getHoverState (Z)I
+	METHOD b mouseDragged (Lnone/avf;II)V
+	METHOD c mousePressed (Lnone/avf;II)Z
+CLASS none/awq
+	METHOD a mouseReleased (II)V
+	METHOD a getHoverState (Z)I
+	METHOD b getButtonWidth ()I
+	METHOD b mouseDragged (Lnone/avf;II)V
+	METHOD c mousePressed (Lnone/avf;II)Z
 CLASS none/aws
 	METHOD a keyTyped (CI)V
 	METHOD a drawScreen (IIF)V
@@ -1830,6 +1934,8 @@ CLASS none/axm
 	METHOD b initGui ()V
 	METHOD k handleMouseInput ()V
 CLASS none/axo
+	CLASS none/axo$1
+		METHOD a playPressSound (Lnone/bqa;)V
 	METHOD a drawScreen (IIF)V
 	METHOD a actionPerformed (Lnone/avt;)V
 	METHOD a confirmClicked (ZI)V
@@ -1966,6 +2072,12 @@ CLASS none/axz
 	METHOD b initGui ()V
 	METHOD k handleMouseInput ()V
 CLASS none/aya
+	CLASS none/aya$a
+		METHOD a mouseReleased (II)V
+		METHOD a playPressSound (Lnone/bqa;)V
+		METHOD a getHoverState (Z)I
+		METHOD b mouseDragged (Lnone/avf;II)V
+		METHOD c mousePressed (Lnone/avf;II)Z
 	METHOD a drawScreen (IIF)V
 	METHOD a actionPerformed (Lnone/avt;)V
 	METHOD b initGui ()V
@@ -2030,10 +2142,20 @@ CLASS none/ayn
 	METHOD b initGui ()V
 	METHOD m onGuiClosed ()V
 CLASS none/ayo
+	CLASS none/ayo$a
+		METHOD b drawButtonForegroundLayer (II)V
+	CLASS none/ayo$b
+		METHOD b drawButtonForegroundLayer (II)V
+	CLASS none/ayo$c
+		METHOD b drawButtonForegroundLayer (II)V
+	CLASS none/ayo$d
+		METHOD a drawButton (Lnone/avf;II)V
 	METHOD a actionPerformed (Lnone/avt;)V
 	METHOD b initGui ()V
 	METHOD e updateScreen ()V
 CLASS none/ayp
+	CLASS none/ayp$a
+		METHOD a drawButton (Lnone/avf;II)V
 	METHOD a keyTyped (CI)V
 	METHOD a drawScreen (IIF)V
 	METHOD a mouseClicked (III)V
@@ -2075,6 +2197,8 @@ CLASS none/azd
 	METHOD b initGui ()V
 	METHOD e updateScreen ()V
 CLASS none/aze
+	CLASS none/aze$a
+		METHOD a drawButton (Lnone/avf;II)V
 	METHOD a drawScreen (IIF)V
 	METHOD a actionPerformed (Lnone/avt;)V
 	METHOD b initGui ()V
@@ -2203,31 +2327,48 @@ CLASS none/bfa
 	METHOD b setField (II)V
 	METHOD g getFieldCount ()I
 CLASS none/bfl net/minecraft/client/renderer/EntityRenderer
+	METHOD a onResourceManagerReload (Lnone/bnj;)V
 CLASS none/bfm net/minecraft/client/renderer/GlStateManager
 	METHOD C disableRescaleNormal ()V
 	METHOD f disableLighting ()V
 	METHOD i disableDepth ()V
 CLASS none/bfo net/minecraft/client/renderer/ItemRenderer
 CLASS none/bfs net/minecraft/client/renderer/RenderGlobal
+	METHOD a onResourceManagerReload (Lnone/bnj;)V
 CLASS none/bfx net/minecraft/client/shader/Framebuffer
 CLASS none/bge net/minecraft/client/renderer/BlockRendererDispatcher
+	METHOD a onResourceManagerReload (Lnone/bnj;)V
 CLASS none/biv net/minecraft/client/renderer/entity/RenderManager
 CLASS none/bji net/minecraft/client/renderer/entity/RenderItem
+	METHOD a onResourceManagerReload (Lnone/bnj;)V
 CLASS none/bmi net/minecraft/client/renderer/texture/TextureMap
 CLASS none/bmk net/minecraft/client/renderer/texture/TextureManager
+	METHOD a onResourceManagerReload (Lnone/bnj;)V
 CLASS none/bnb net/minecraft/client/resources/DefaultResourcePack
+CLASS none/bnf
+	METHOD a onResourceManagerReload (Lnone/bnj;)V
+CLASS none/bng
+	METHOD a onResourceManagerReload (Lnone/bnj;)V
 CLASS none/bnh net/minecraft/client/resources/IReloadableResourceManager
 CLASS none/bnj net/minecraft/client/resources/IResourceManager
+CLASS none/bnk net/minecraft/client/resources/IResourceManagerReloadListener
+	METHOD a onResourceManagerReload (Lnone/bnj;)V
 CLASS none/bnn net/minecraft/client/resources/ResourcePackRepository
 CLASS none/bnq net/minecraft/client/resources/SkinManager
 CLASS none/bnt net/minecraft/client/resources/LanguageManager
+	METHOD a onResourceManagerReload (Lnone/bnj;)V
 CLASS none/bnz net/minecraft/client/resources/data/IMetadataSerializer
 CLASS none/bov net/minecraft/client/resources/model/ModelManager
+	METHOD a onResourceManagerReload (Lnone/bnj;)V
+CLASS none/bpg net/minecraft/client/audio/PositionedSoundRecord
+	METHOD a createPositionedSoundRecord (Lnone/jz;F)Lnone/bpg;
 CLASS none/bpp net/minecraft/server/integrated/IntegratedServer
 	METHOD ac isSnooperEnabled ()Z
 CLASS none/bpw net/minecraft/client/audio/MusicTicker
 	CLASS none/bpw$a MusicType
 CLASS none/bqa net/minecraft/client/audio/SoundHandler
+	METHOD a onResourceManagerReload (Lnone/bnj;)V
+	METHOD a playSound (Lnone/bpk;)V
 CLASS none/bqn net/minecraft/client/stream/IStream
 CLASS net/minecraft/server/MinecraftServer net/minecraft/server/MinecraftServer
 	METHOD B getAllowNether ()Z
